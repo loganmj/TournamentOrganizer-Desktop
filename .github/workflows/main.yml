@@ -19,13 +19,13 @@ jobs:
         dotnet-version: '8.x' # Use the .NET version your project targets
 
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --configuration Release --no-restore
 
     - name: Run tests
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --no-restore --verbosity normal
 
   build-linux:
     runs-on: ubuntu-latest
@@ -40,10 +40,10 @@ jobs:
         dotnet-version: '8.x' # Use the .NET version your project targets
 
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --configuration Release --no-restore
 
     - name: Run tests
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --no-restore --verbosity normal
