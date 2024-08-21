@@ -6,8 +6,29 @@ on:
       - main
 
 jobs:
-  build:
+  build-windows:
     runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x' # Use the .NET version your project targets
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test --no-restore --verbosity normal
+
+  build-linux:
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
