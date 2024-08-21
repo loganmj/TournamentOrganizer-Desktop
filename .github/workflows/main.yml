@@ -40,10 +40,10 @@ jobs:
         dotnet-version: '8.x' # Use the .NET version your project targets
 
     - name: Install dependencies
-      run: dotnet restore TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj
+      run: dotnet restore TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj /p:EnableWindowsTargeting=true
 
     - name: Build
-      run: dotnet build TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --configuration Release --no-restore
+      run: dotnet build TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --configuration Release --no-restore /p:EnableWindowsTargeting=true
 
     - name: Run tests
-      run: dotnet test TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --no-restore --verbosity normal
+      run: dotnet test TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --no-restore --verbosity normal /p:EnableWindowsTargeting=true
