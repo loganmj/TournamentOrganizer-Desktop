@@ -15,6 +15,17 @@ namespace TournamentOrganizer_Desktop
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// The referenced tournament object.
+        /// The app is only allowed to run one tournament at a time.
+        /// </summary>
+        public ITournament Tournament
+        {
+            get => _tournament;
+            set => SetProperty(ref _tournament, value);
+        }
+
         #endregion
 
         #region Constructors
