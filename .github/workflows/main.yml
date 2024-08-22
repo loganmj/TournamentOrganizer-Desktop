@@ -49,4 +49,4 @@ jobs:
       run: dotnet test TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --no-restore --verbosity normal /p:EnableWindowsTargeting=true
     
     - name: Delete generated.sln
-      run: rm -f ../*generated.sln
+      run: rm -f ../*.generated.sln
