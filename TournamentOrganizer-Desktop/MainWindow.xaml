@@ -3,14 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TournamentOrganizer_Desktop"
+        xmlns:local="clr-namespace:TournamentOrganizer_Desktop" 
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="{Binding Title}"
         Height="450"
         Width="800">
-    <Window.DataContext>
-        <StaticResource ResourceKey="MainWindowViewModel"/>
-    </Window.DataContext>
+   
     <StackPanel>
         <Label Content="Welcome"
                HorizontalAlignment="Center"/>
@@ -24,7 +23,8 @@
             <TextBox Style="{StaticResource TextBoxStyle}"
                      Text="{Binding TournamentNameInput}"/>
             <Button Style="{StaticResource ButtonStyle}"
-                    Content="Create"/>
+                    Content="Create"
+                    Command="{Binding CreateButtonClickCommand}"/>
         </StackPanel>
     </StackPanel>
 </Window>

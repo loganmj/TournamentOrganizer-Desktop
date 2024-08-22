@@ -4,8 +4,6 @@
              xmlns:local="clr-namespace:TournamentOrganizer_Desktop"
              Startup="Application_Startup">
     <Application.Resources>
-        <!-- View modesl -->
-        <local:MainWindowViewModel x:Key="MainWindowViewModel"/>
 
         <!-- Styles -->
         <Style x:Key="TextBoxStyle"
