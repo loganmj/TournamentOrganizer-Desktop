@@ -22,7 +22,7 @@
             <Label Content="Tournament Name: "
                    VerticalAlignment="Center"/>
             <TextBox Style="{StaticResource TextBoxStyle}"
-                     Text="TEST"/>
+                     Text="{Binding TournamentNameInput}"/>
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Create"/>
         </StackPanel>

@@ -1,9 +1,11 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace TournamentOrganizer_Desktop.Models;
 
 /// <summary>
 /// Defines a Swiss style tournament.
 /// </summary>
-public class SwissTournament : ITournament
+public partial class SwissTournament : ObservableObject, ITournament
 {
     #region Properties
 
@@ -21,15 +23,39 @@ public class SwissTournament : ITournament
     #region Constructors
 
     /// <summary>
+    /// Base constructor
+    /// </summary>
+    public SwissTournament()
+    {
+        ID = GenerateUniqueID();
+        Name = "";
+        Participants = [];
+    }
+
+    /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>
-    public SwissTournament(uint id, string name)
+    public SwissTournament(string name)
     {
-        ID = id;
+        ID = GenerateUniqueID();
         Name = name;
-        Participants = new List<IParticipant>();
+        Participants = [];
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Generates a unique ID value.
+    /// </summary>
+    /// <returns>A unique uint ID value.</returns>
+    private uint GenerateUniqueID()
+    {
+        // TODO
+        return 1;
     }
 
     #endregion
