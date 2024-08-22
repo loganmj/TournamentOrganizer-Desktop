@@ -11,40 +11,40 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.x' # Use the .NET version your project targets
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.x" # Use the .NET version your project targets
 
-    - name: Install dependencies
-      run: dotnet restore TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj
+      - name: Install dependencies
+        run: dotnet restore TournamentOrganizer-Desktop.sln
 
-    - name: Build
-      run: dotnet build TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --configuration Release --no-restore
+      - name: Build
+        run: dotnet build TournamentOrganizer-Desktop.sln --configuration Release --no-restore
 
-    - name: Run tests
-      run: dotnet test TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --no-restore --verbosity normal
+      - name: Run tests
+        run: dotnet test TournamentOrganizer-Desktop.sln --no-restore --verbosity normal
 
   build-linux:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.x' # Use the .NET version your project targets
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.x" # Use the .NET version your project targets
 
-    - name: Install dependencies
-      run: dotnet restore TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj /p:EnableWindowsTargeting=true
+      - name: Install dependencies
+        run: dotnet restore TournamentOrganizer-Desktop.sln /p:EnableWindowsTargeting=true
 
-    - name: Build
-      run: dotnet build TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --configuration Release --no-restore /p:EnableWindowsTargeting=true
+      - name: Build
+        run: dotnet build TournamentOrganizer-Desktop.sln --configuration Release --no-restore /p:EnableWindowsTargeting=true
 
-    - name: Run tests
-      run: dotnet test TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --no-restore --verbosity normal /p:EnableWindowsTargeting=true
+      - name: Run tests
+        run: dotnet test TournamentOrganizer-Desktop.sln --no-restore --verbosity normal /p:EnableWindowsTargeting=true
