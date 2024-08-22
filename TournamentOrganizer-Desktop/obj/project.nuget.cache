@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gbR9+93V3bE=",
+  "dgSpecHash": "qF0LgoyvxN8=",
   "success": true,
   "projectFilePath": "C:\\Users\\mjlogan\\Workspace\\TournamentOrganizer-Desktop\\TournamentOrganizer-Desktop\\TournamentOrganizer-Desktop.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\mjlogan\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\mjlogan\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\mjlogan\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
     "C:\\Users\\mjlogan\\.nuget\\packages\\microsoft.net.test.sdk\\17.8.0\\microsoft.net.test.sdk.17.8.0.nupkg.sha512",

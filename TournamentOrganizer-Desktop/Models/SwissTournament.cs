@@ -1,14 +1,25 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace TournamentOrganizer_Desktop.Models;
 
 /// <summary>
 /// Defines a Swiss style tournament.
 /// </summary>
-public class SwissTournament : ITournament
+public partial class SwissTournament : ObservableObject, ITournament
 {
+    #region Constants
+
+    /// <summary>
+    /// Default tournament name.
+    /// </summary>
+    private const string DEFAULT_NAME = "New Tournament";
+
+    #endregion
+
     #region Properties
 
     /// <inheritdoc/>
-    public uint ID { get; set; }
+    public Guid ID { get; set; }
 
     /// <inheritdoc/>
     public string Name { get; set; }
@@ -21,15 +32,25 @@ public class SwissTournament : ITournament
     #region Constructors
 
     /// <summary>
+    /// Base constructor
+    /// </summary>
+    public SwissTournament()
+    {
+        ID = Guid.NewGuid();
+        Name = DEFAULT_NAME;
+        Participants = [];
+    }
+
+    /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>
-    public SwissTournament(uint id, string name)
+    public SwissTournament(string name)
     {
-        ID = id;
-        Name = name;
-        Participants = new List<IParticipant>();
+        ID = Guid.NewGuid();
+        Name = name ?? DEFAULT_NAME;
+        Participants = [];
     }
 
     #endregion
