@@ -11,13 +11,20 @@
     <Window.DataContext>
         <StaticResource ResourceKey="MainWindowViewModel"/>
     </Window.DataContext>
-    <Grid>
-        <Label Content="Welcome."/>
-        <Label Content="Create a Tournament"/>
-        <StackPanel>
-            <TextBox Width="50"
+    <StackPanel>
+        <Label Content="Welcome"
+               HorizontalAlignment="Center"/>
+        <Label Content="Create a Tournament"
+               HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="10,10,10,10">
+            <Label Content="Tournament Name: "
+                   VerticalAlignment="Center"/>
+            <TextBox Style="{StaticResource TextBoxStyle}"
                      Text="TEST"/>
-            <Button Content="Create"/>
+            <Button Style="{StaticResource ButtonStyle}"
+                    Content="Create"/>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </Window>
