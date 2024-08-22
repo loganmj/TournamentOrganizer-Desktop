@@ -10,12 +10,12 @@ public interface ITournament
     /// <summary>
     /// The unique ID value of the tournament.
     /// </summary>
-    public uint ID { get; set; }
+    uint ID { get; set; }
 
     /// <summary>
     /// The name of the tournament.
     /// </summary>
-    public string Name { get; set; }
+    string Name { get; set; }
 
     /// <summary>
     /// A list of all participants in the tournament.
