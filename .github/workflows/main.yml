@@ -27,9 +27,6 @@ jobs:
     - name: Run tests
       run: dotnet test TournamentOrganizer-Desktop/TournamentOrganizer-Desktop.csproj --no-restore --verbosity normal
 
-    - name: Delete generated.sln
-      run: Remove-Item -Path "./TournamentOrganizer-Desktop.generated.sln" -ErrorAction SilentlyContinue
-
   build-linux:
     runs-on: ubuntu-latest
 
