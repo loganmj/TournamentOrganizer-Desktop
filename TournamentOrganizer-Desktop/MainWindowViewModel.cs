@@ -7,6 +7,16 @@ namespace TournamentOrganizer_Desktop
     /// </summary>
     public class MainWindowViewModel : ViewModelBase
     {
-        // TODO:
+        #region Constructors
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public MainWindowViewModel()
+        {
+            Title = "Tournament Organizer";
+        }
+
+        #endregion
     }
 }

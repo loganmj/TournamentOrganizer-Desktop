@@ -1,13 +1,43 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Microsoft.Windows.Themes;
 
 namespace TournamentOrganizer_Desktop.ViewModels
 {
     /// <summary>
     /// A base class for view models in the project.
     /// </summary>
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
+        #region Fields
+
+        private string? _title;
+        private bool _isBusy;
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// The title of the form.
+        /// </summary>
+        public string? Title
+        {
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
+
+        /// <summary>
+        /// Is the form busy.
+        /// </summary>
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
+        }
+
+        #endregion
+
         #region Events
 
         /// <inheritdoc/>
