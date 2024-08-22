@@ -10,7 +10,7 @@ public interface ITournament
     /// <summary>
     /// The unique ID value of the tournament.
     /// </summary>
-    uint ID { get; set; }
+    Guid ID { get; set; }
 
     /// <summary>
     /// The name of the tournament.

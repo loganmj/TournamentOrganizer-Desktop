@@ -1,9 +1,8 @@
-using TournamentOrganizer_Desktop.ViewModels;
-using TournamentOrganizer_Desktop.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows;
+using TournamentOrganizer_Desktop.Models;
+using TournamentOrganizer_Desktop.ViewModels;
 
 namespace TournamentOrganizer_Desktop;
 

@@ -19,7 +19,7 @@ public partial class SwissTournament : ObservableObject, ITournament
     #region Properties
 
     /// <inheritdoc/>
-    public uint ID { get; set; }
+    public Guid ID { get; set; }
 
     /// <inheritdoc/>
     public string Name { get; set; }
@@ -36,7 +36,7 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// </summary>
     public SwissTournament()
     {
-        ID = GenerateUniqueID();
+        ID = Guid.NewGuid();
         Name = DEFAULT_NAME;
         Participants = [];
     }
@@ -48,23 +48,9 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// <param name="name"></param>
     public SwissTournament(string name)
     {
-        ID = GenerateUniqueID();
+        ID = Guid.NewGuid();
         Name = name ?? DEFAULT_NAME;
         Participants = [];
-    }
-
-    #endregion
-
-    #region Private Methods
-
-    /// <summary>
-    /// Generates a unique ID value.
-    /// </summary>
-    /// <returns>A unique uint ID value.</returns>
-    private uint GenerateUniqueID()
-    {
-        // TODO
-        return 1;
     }
 
     #endregion
