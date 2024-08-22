@@ -7,6 +7,15 @@ namespace TournamentOrganizer_Desktop.Models;
 /// </summary>
 public partial class SwissTournament : ObservableObject, ITournament
 {
+    #region Constants
+
+    /// <summary>
+    /// Default tournament name.
+    /// </summary>
+    private const string DEFAULT_NAME = "New Tournament";
+
+    #endregion
+
     #region Properties
 
     /// <inheritdoc/>
@@ -28,7 +37,7 @@ public partial class SwissTournament : ObservableObject, ITournament
     public SwissTournament()
     {
         ID = GenerateUniqueID();
-        Name = "";
+        Name = DEFAULT_NAME;
         Participants = [];
     }
 
@@ -40,7 +49,7 @@ public partial class SwissTournament : ObservableObject, ITournament
     public SwissTournament(string name)
     {
         ID = GenerateUniqueID();
-        Name = name;
+        Name = name ?? DEFAULT_NAME;
         Participants = [];
     }
 
