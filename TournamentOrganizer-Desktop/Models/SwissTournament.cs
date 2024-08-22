@@ -5,6 +5,19 @@ namespace TournamentOrganizer_Desktop.Models;
 /// </summary>
 public class SwissTournament : ITournament
 {
+    #region Properties
+
+    /// <inheritdoc/>
+    public uint ID { get; set; }
+
+    /// <inheritdoc/>
+    public string Name { get; set; }
+
+    /// <inheritdoc/>
+    public List<IParticipant> Participants { get; set; }
+
+    #endregion
+
     #region Constructors
 
     /// <summary>
@@ -12,11 +25,11 @@ public class SwissTournament : ITournament
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>
-    public SwissTournament(uing id, string name)
+    public SwissTournament(uint id, string name)
     {
-        Id = id;
+        ID = id;
         Name = name;
-        Participants = new List<Participant>();
+        Participants = new List<IParticipant>();
     }
 
     #endregion
@@ -38,7 +51,7 @@ public class SwissTournament : ITournament
     /// <param name="id"></param>
     public void RemoveParticipant(uint id)
     {
-        var targetParticipant = Participants.FirstOrDefault(p => p.Id == id);
+        var targetParticipant = Participants.FirstOrDefault(p => p.ID == id);
 
         if (targetParticipant != null)
         {

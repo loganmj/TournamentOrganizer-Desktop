@@ -1,4 +1,5 @@
 using TournamentOrganizer_Desktop.ViewModels;
+using TournamentOrganizer_Desktop.Models;
 
 namespace TournamentOrganizer_Desktop
 {
@@ -24,6 +25,7 @@ namespace TournamentOrganizer_Desktop
         public MainWindowViewModel()
         {
             Title = "Tournament Organizer";
+            _tournament = new SwissTournament(1, "My Swiss Tournament");
         }
 
         #endregion
