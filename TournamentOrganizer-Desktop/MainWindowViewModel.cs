@@ -7,6 +7,15 @@ namespace TournamentOrganizer_Desktop
     /// </summary>
     public class MainWindowViewModel : ViewModelBase
     {
+        #region Fields
+
+        private ITournament _tournament;
+
+        #endregion
+
+        #region Properties
+        #endregion
+
         #region Constructors
 
         /// <summary>

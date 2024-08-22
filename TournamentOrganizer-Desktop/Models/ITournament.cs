@@ -1,33 +1,42 @@
-namespace TournamentOrganizer_Desktop.Models
+namespace TournamentOrganizer_Desktop.Models;
+
+/// <summary>
+/// An interface for a tournament object.
+/// </summary>
+public interface ITournament
 {
+    #region Properties
+
     /// <summary>
-    /// An interface for a tournament object.
+    /// The unique ID value of the tournament.
     /// </summary>
-    public interface ITournament
-    {
-        #region Properties
+    public uint ID { get; set; }
 
-        /// <summary>
-        /// A list of all participants in the tournament.
-        /// </summary>
-        List<IParticipant> Participants { get; }
+    /// <summary>
+    /// The name of the tournament.
+    /// </summary>
+    public string Name { get; set; }
 
-        #endregion
+    /// <summary>
+    /// A list of all participants in the tournament.
+    /// </summary>
+    List<IParticipant> Participants { get; set; }
 
-        #region Methods
+    #endregion
 
-        /// <summary>
-        /// Adds a participant to the tournament.
-        /// </summary>
-        /// <param name="participant"></param>
-        void AddParticipant(IParticipant participant);
+    #region Methods
 
-        /// <summary>
-        /// Removes a participant from the tournament.
-        /// </summary>
-        /// <param name="ID"></param>
-        void RemoveParticipant(uint ID);
+    /// <summary>
+    /// Adds a participant to the tournament.
+    /// </summary>
+    /// <param name="participant"></param>
+    void AddParticipant(IParticipant participant);
 
-        #endregion
-    }
+    /// <summary>
+    /// Removes a participant from the tournament.
+    /// </summary>
+    /// <param name="ID"></param>
+    void RemoveParticipant(uint ID);
+
+    #endregion
 }
