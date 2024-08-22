@@ -20,4 +20,7 @@ public class SwissTournament : ITournament
     }
 
     #endregion
+
+    #region Public Methods
+    #endregion
 }
