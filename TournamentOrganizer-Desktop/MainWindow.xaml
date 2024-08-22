@@ -12,6 +12,12 @@
         <StaticResource ResourceKey="MainWindowViewModel"/>
     </Window.DataContext>
     <Grid>
-        <Label Content="HELLO WORLD"/>
+        <Label Content="Welcome."/>
+        <Label Content="Create a Tournament"/>
+        <StackPanel>
+            <TextBox Width="50"
+                     Text="TEST"/>
+            <Button Content="Create"/>
+        </StackPanel>
     </Grid>
 </Window>
