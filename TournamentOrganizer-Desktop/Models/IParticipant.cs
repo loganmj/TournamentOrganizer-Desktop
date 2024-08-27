@@ -17,6 +17,11 @@ namespace TournamentOrganizer_Desktop.Models
         /// </summary>
         string Name { get; set; }
 
+        /// <summary>
+        /// A number given to a participant, localized to a specific tournament.
+        /// </summary>
+        uint ParticipantNumber { get; set; }
+
         #endregion
     }
 }

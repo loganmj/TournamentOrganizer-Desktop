@@ -11,7 +11,8 @@
         Height="450"
         Width="800">
 
-   <Grid>      
+   <Grid>
+
       <!-- Landing view -->
       <StackPanel Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.AppStarted}}">
          <Label Content="Welcome"
@@ -32,22 +33,33 @@
       </StackPanel>
       
       <!-- Tournament view -->
-      <StackPanel Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
-         <Label Content="{Binding Tournament.Name, StringFormat='Tournament Name: {0}'}"></Label>
-         <StackPanel Orientation="Horizontal">
+      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+         </Grid.RowDefinitions>
+         <Label Grid.Row="0" 
+                Content="{Binding Tournament.Name, StringFormat='Tournament Name: {0}'}"></Label>
+         <StackPanel Grid.Row="1"
+                     Orientation="Horizontal">
             <Button Style="{StaticResource ButtonStyle}"
         Content="Add Participant"
         Command="{Binding AddParticipantButtonClickCommand}"/>
             <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding NewParticipantNameInput}" MaxLength="30"></TextBox>
          </StackPanel>
-         <ListView ItemsSource="{Binding Tournament.Participants}">
+         <ListView Grid.Row="2"
+                   ItemsSource="{Binding Tournament.Participants}"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto"
+                   ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ListView.View>
                <GridView>
+                  <GridViewColumn Header="#" Width="35" DisplayMemberBinding="{Binding ParticipantNumber}"/>
                   <GridViewColumn Header="Participant" Width="250" DisplayMemberBinding="{Binding Name}"/>
                   <GridViewColumn Header="ID" Width="250" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                </GridView>
             </ListView.View>
          </ListView>
-      </StackPanel>
+      </Grid>
    </Grid>
 </Window>

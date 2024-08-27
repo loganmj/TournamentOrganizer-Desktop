@@ -19,6 +19,9 @@
         /// <inheritdoc/>
         public string Name { get; set; }
 
+        /// <inheritdoc/>
+        public uint ParticipantNumber { get; set; }
+
         #endregion
 
         #region Constructors

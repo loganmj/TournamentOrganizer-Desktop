@@ -15,6 +15,11 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// </summary>
     private const string DEFAULT_NAME = "New Tournament";
 
+    /// <summary>
+    /// The maximum number of participants.
+    /// </summary>
+    private const uint MAX_PARTICIPANTS = 1000;
+
     #endregion
 
     #region Fields
@@ -61,6 +66,13 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// <inheritdoc/>
     public void AddParticipant(IParticipant participant)
     {
+        // Don't add participant if tournament is full.
+        if (Participants.Count >= MAX_PARTICIPANTS) 
+        {
+            return;
+        }
+
+        participant.ParticipantNumber = (uint)Participants.Count;
         Participants.Add(participant);
     }
 
