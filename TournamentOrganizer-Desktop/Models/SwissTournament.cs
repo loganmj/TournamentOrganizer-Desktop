@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace TournamentOrganizer_Desktop.Models;
 
@@ -14,18 +15,23 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// </summary>
     private const string DEFAULT_NAME = "New Tournament";
 
+    /// <summary>
+    /// The maximum number of participants.
+    /// </summary>
+    private const uint MAX_PARTICIPANTS = 1000;
+
     #endregion
 
-    #region Properties
+    #region Fields
 
-    /// <inheritdoc/>
-    public Guid ID { get; set; }
+    [ObservableProperty]
+    private Guid _id;
 
-    /// <inheritdoc/>
-    public string Name { get; set; }
+    [ObservableProperty]
+    private string _name;
 
-    /// <inheritdoc/>
-    public List<IParticipant> Participants { get; set; }
+    [ObservableProperty]
+    private ObservableCollection<IParticipant> _participants;
 
     #endregion
 
@@ -36,7 +42,7 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// </summary>
     public SwissTournament()
     {
-        ID = Guid.NewGuid();
+        Id = Guid.NewGuid();
         Name = DEFAULT_NAME;
         Participants = [];
     }
@@ -48,7 +54,7 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// <param name="name"></param>
     public SwissTournament(string name)
     {
-        ID = Guid.NewGuid();
+        Id = Guid.NewGuid();
         Name = name ?? DEFAULT_NAME;
         Participants = [];
     }
@@ -60,13 +66,20 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// <inheritdoc/>
     public void AddParticipant(IParticipant participant)
     {
+        // Don't add participant if tournament is full.
+        if (Participants.Count >= MAX_PARTICIPANTS) 
+        {
+            return;
+        }
+
+        participant.ParticipantNumber = (uint)Participants.Count;
         Participants.Add(participant);
     }
 
     /// <inheritdoc/>
-    public void RemoveParticipant(uint id)
+    public void RemoveParticipant(string Name)
     {
-        var targetParticipant = Participants.FirstOrDefault(p => p.ID == id);
+        var targetParticipant = Participants.FirstOrDefault(p => p.Name == Name);
 
         if (targetParticipant != null)
         {
@@ -77,7 +90,7 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// <inheritdoc/>
     public override string ToString()
     {
-        return $"[Swiss Tournament]: ID={ID}, Name={Name}, Participants={string.Join(',', Participants)}";
+        return $"[Swiss Tournament]: ID={Id}, Name={Name}, Participants={string.Join(',', Participants)}";
     }
 
     #endregion

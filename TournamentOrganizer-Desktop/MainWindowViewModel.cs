@@ -1,6 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Windows;
 using TournamentOrganizer_Desktop.Models;
 using TournamentOrganizer_Desktop.ViewModels;
 
@@ -22,6 +21,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private AppState _state;
 
+    [ObservableProperty]
+    private string _newParticipantNameInput;
+
     #endregion
 
     #region Constructors
@@ -34,6 +36,7 @@ public partial class MainWindowViewModel : ViewModelBase
         Title = "Tournament Organizer";
         TournamentNameInput = "New Tournament";
         State = AppState.AppStarted;
+        NewParticipantNameInput = "John Doe";
     }
 
     #endregion
@@ -48,6 +51,15 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         Tournament = new SwissTournament(TournamentNameInput);
         State = AppState.TournamentStarted;
+    }
+
+    /// <summary>
+    /// Handles the Add Participant button being clicked.
+    /// </summary>
+    [RelayCommand]
+    private void OnAddParticipantButtonClick()
+    {
+        Tournament?.AddParticipant(new Participant(NewParticipantNameInput));
     }
 
     #endregion
