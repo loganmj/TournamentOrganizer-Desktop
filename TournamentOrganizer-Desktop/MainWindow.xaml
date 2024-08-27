@@ -34,17 +34,20 @@
       <!-- Tournament view -->
       <StackPanel Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
          <Label Content="{Binding Tournament.Name, StringFormat='Tournament Name: {0}'}"></Label>
+         <StackPanel Orientation="Horizontal">
+            <Button Style="{StaticResource ButtonStyle}"
+        Content="Add Participant"
+        Command="{Binding AddParticipantButtonClickCommand}"/>
+            <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding NewParticipantNameInput}" MaxLength="30"></TextBox>
+         </StackPanel>
          <ListView ItemsSource="{Binding Tournament.Participants}">
             <ListView.View>
                <GridView>
-                  <GridViewColumn Header="Participant" DisplayMemberBinding="{Binding Name}"/>
-                  <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                  <GridViewColumn Header="Participant" Width="250" DisplayMemberBinding="{Binding Name}"/>
+                  <GridViewColumn Header="ID" Width="250" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                </GridView>
             </ListView.View>
          </ListView>
-         <Button Style="{StaticResource ButtonStyle}"
-                 Content="Add Participant"
-                 Command="{Binding AddParticipantButtonClickCommand}"/>
       </StackPanel>
    </Grid>
 </Window>

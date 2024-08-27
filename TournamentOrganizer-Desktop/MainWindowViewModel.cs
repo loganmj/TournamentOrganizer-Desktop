@@ -21,6 +21,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private AppState _state;
 
+    [ObservableProperty]
+    private string _newParticipantNameInput;
+
     #endregion
 
     #region Constructors
@@ -33,6 +36,7 @@ public partial class MainWindowViewModel : ViewModelBase
         Title = "Tournament Organizer";
         TournamentNameInput = "New Tournament";
         State = AppState.AppStarted;
+        NewParticipantNameInput = "John Doe";
     }
 
     #endregion
@@ -55,7 +59,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void OnAddParticipantButtonClick()
     {
-        Tournament?.AddParticipant(new Participant());
+        Tournament?.AddParticipant(new Participant(NewParticipantNameInput));
     }
 
     #endregion

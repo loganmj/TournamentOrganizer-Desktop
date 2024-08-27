@@ -18,14 +18,15 @@
             <Setter Property="Padding"
                     Value="5"/>
             <Setter Property="Width"
-                    Value="150"/>
+                    Value="250"/>
             <Setter Property="Margin"
                     Value="5,5,5,5"/>
         </Style>
+       
         <Style x:Key="ButtonStyle"
                TargetType="Button">
             <Setter Property="Width"
-                    Value="50"/>
+                    Value="150"/>
             <Setter Property="Margin"
                     Value="5,5,5,5"/>
         </Style>
