@@ -19,6 +19,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private string _tournamentNameInput;
 
+    [ObservableProperty]
+    private AppState _state;
+
     #endregion
 
     #region Constructors
@@ -29,7 +32,8 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         Title = "Tournament Organizer";
-        _tournamentNameInput = "New Tournament";
+        TournamentNameInput = "New Tournament";
+        State = AppState.AppStarted;
     }
 
     #endregion
@@ -43,8 +47,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private void OnCreateButtonClick()
     {
         Tournament = new SwissTournament(TournamentNameInput);
-
-        MessageBox.Show($"Created new tournament with ID={Tournament.ID}, Name={Tournament.Name}");
+        State = AppState.TournamentStarted;
     }
 
     #endregion

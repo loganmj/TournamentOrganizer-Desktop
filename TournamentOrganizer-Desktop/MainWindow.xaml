@@ -4,18 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TournamentOrganizer_Desktop" 
+        xmlns:viewModels="clr-namespace:TournamentOrganizer_Desktop.ViewModels"
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="{Binding Title}"
         Height="450"
         Width="800">
-   
-    <StackPanel>
-        <Label Content="Welcome"
+
+   <Grid>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="auto"/>
+         <RowDefinition Height="auto"/>
+      </Grid.RowDefinitions>
+      <!-- State label -->
+      <Label Content="{Binding State}"></Label>
+      
+      <!-- Landing view -->
+      <StackPanel Grid.Row="1" 
+                  Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.AppStarted}}">
+         <Label Content="Welcome"
                HorizontalAlignment="Center"/>
-        <Label Content="Create a Tournament"
+         <Label Content="Create a Tournament"
                HorizontalAlignment="Center"/>
-        <StackPanel Orientation="Horizontal"
+         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     Margin="10,10,10,10">
             <Label Content="Tournament Name: "
@@ -25,6 +36,13 @@
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Create"
                     Command="{Binding CreateButtonClickCommand}"/>
-        </StackPanel>
-    </StackPanel>
+         </StackPanel>
+      </StackPanel>
+      
+      <!-- Tournament view -->
+      <StackPanel Grid.Row="1"
+                  Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
+         <Label Content="{Binding Tournament}"></Label>
+      </StackPanel>
+   </Grid>
 </Window>
