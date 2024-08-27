@@ -10,7 +10,7 @@ namespace TournamentOrganizer_Desktop.Models
         /// <summary>
         /// A unique ID number for the participant.
         /// </summary>
-        uint ID { get; set; }
+        Guid Id { get; set; }
 
         /// <summary>
         /// The name of the participant.

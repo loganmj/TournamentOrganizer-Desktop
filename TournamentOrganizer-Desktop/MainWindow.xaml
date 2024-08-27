@@ -11,17 +11,9 @@
         Height="450"
         Width="800">
 
-   <Grid>
-      <Grid.RowDefinitions>
-         <RowDefinition Height="auto"/>
-         <RowDefinition Height="auto"/>
-      </Grid.RowDefinitions>
-      <!-- State label -->
-      <Label Content="{Binding State}"></Label>
-      
+   <Grid>      
       <!-- Landing view -->
-      <StackPanel Grid.Row="1" 
-                  Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.AppStarted}}">
+      <StackPanel Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.AppStarted}}">
          <Label Content="Welcome"
                HorizontalAlignment="Center"/>
          <Label Content="Create a Tournament"
@@ -40,9 +32,19 @@
       </StackPanel>
       
       <!-- Tournament view -->
-      <StackPanel Grid.Row="1"
-                  Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
-         <Label Content="{Binding Tournament}"></Label>
+      <StackPanel Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
+         <Label Content="{Binding Tournament.Name, StringFormat='Tournament Name: {0}'}"></Label>
+         <ListView ItemsSource="{Binding Tournament.Participants}">
+            <ListView.View>
+               <GridView>
+                  <GridViewColumn Header="Participant" DisplayMemberBinding="{Binding Name}"/>
+                  <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+               </GridView>
+            </ListView.View>
+         </ListView>
+         <Button Style="{StaticResource ButtonStyle}"
+                 Content="Add Participant"
+                 Command="{Binding AddParticipantButtonClickCommand}"/>
       </StackPanel>
    </Grid>
 </Window>

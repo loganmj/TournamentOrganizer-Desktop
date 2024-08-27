@@ -1,3 +1,5 @@
+using System.Collections.ObjectModel;
+
 namespace TournamentOrganizer_Desktop.Models;
 
 /// <summary>
@@ -10,7 +12,7 @@ public interface ITournament
     /// <summary>
     /// The unique ID value of the tournament.
     /// </summary>
-    Guid ID { get; set; }
+    Guid Id { get; set; }
 
     /// <summary>
     /// The name of the tournament.
@@ -20,7 +22,7 @@ public interface ITournament
     /// <summary>
     /// A list of all participants in the tournament.
     /// </summary>
-    List<IParticipant> Participants { get; set; }
+    ObservableCollection<IParticipant> Participants { get; set; }
 
     #endregion
 
@@ -35,8 +37,8 @@ public interface ITournament
     /// <summary>
     /// Removes a participant from the tournament.
     /// </summary>
-    /// <param name="ID"></param>
-    void RemoveParticipant(uint ID);
+    /// <param name="Name"></param>
+    void RemoveParticipant(string Name);
 
     #endregion
 }
