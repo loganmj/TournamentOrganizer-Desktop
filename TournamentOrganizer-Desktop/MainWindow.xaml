@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TournamentOrganizer_Desktop" 
         xmlns:viewModels="clr-namespace:TournamentOrganizer_Desktop.ViewModels"
+        xmlns:userControls="clr-namespace:TournamentOrganizer_Desktop.UserControls"
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="{Binding Title}"
@@ -28,7 +29,7 @@
                      Text="{Binding TournamentNameInput}"/>
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Create"
-                    Command="{Binding CreateButtonClickCommand}"/>
+                    Command="{Binding CreateTournamentCommand}"/>
          </StackPanel>
       </StackPanel>
       
@@ -44,27 +45,28 @@
             <Run Text="Tournament: "/>
             <Run Text="{Binding Tournament.Name}"/>
          </TextBlock>
+         
          <StackPanel Grid.Row="1"
                      Orientation="Horizontal">
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Add Participant"
-                    Command="{Binding AddParticipantButtonClickCommand}"/>
+                    Command="{Binding AddParticipantCommand}"/>
             <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding NewParticipantNameInput}" MaxLength="30"></TextBox>
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Start"
-                    Command="{Binding StartTournamentButtonClickCommand}"/>
+                    Command="{Binding StartTournamentCommand}"/>
          </StackPanel>
-         <ListView Grid.Row="2"
-                   ItemsSource="{Binding Tournament.Participants}"
-                   ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <ListView.View>
-               <GridView>
-                  <GridViewColumn Header="#" Width="35" DisplayMemberBinding="{Binding ParticipantNumber}"/>
-                  <GridViewColumn Header="Participant" Width="250" DisplayMemberBinding="{Binding Name}"/>
-                  <GridViewColumn Header="ID" Width="250" DisplayMemberBinding="{Binding Id}"/>
-               </GridView>
-            </ListView.View>
-         </ListView>
+
+         <ListBox Grid.Row="2"
+                  ItemsSource="{Binding Tournament.Participants}">
+            <ListBox.ItemTemplate>
+               <DataTemplate>
+                  <userControls:ParticipantManager 
+                     Participant="{Binding}" 
+                     RemoveParticipant="{Binding DataContext.RemoveParticipantCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+               </DataTemplate>
+            </ListBox.ItemTemplate>
+         </ListBox>
       </Grid>
       
       <!-- Active Tournament view -->

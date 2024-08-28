@@ -47,7 +47,7 @@ public partial class MainWindowViewModel : ViewModelBase
     /// Handles the Create button being clicked.
     /// </summary>
     [RelayCommand]
-    private void OnCreateButtonClick()
+    private void CreateTournament()
     {
         Tournament = new SwissTournament(TournamentNameInput);
         State = AppState.TournamentSetup;
@@ -57,16 +57,22 @@ public partial class MainWindowViewModel : ViewModelBase
     /// Handles the Add Participant button being clicked.
     /// </summary>
     [RelayCommand]
-    private void OnAddParticipantButtonClick()
+    private void AddParticipant()
     {
         Tournament?.AddParticipant(NewParticipantNameInput);
+    }
+
+    [RelayCommand]
+    private void RemoveParticipant(IParticipant participant)
+    {
+        Tournament?.RemoveParticipant(participant.Id);
     }
 
     /// <summary>
     /// Handles the Start Tournament button being clicked.
     /// </summary>
     [RelayCommand]
-    private void OnStartTournamentButtonClick()
+    private void StartTournament()
     {
         Tournament?.StartTournament();
         State = AppState.TournamentStarted;
