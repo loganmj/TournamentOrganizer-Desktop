@@ -1,9 +1,10 @@
-﻿namespace TournamentOrganizer_Desktop.Models
+﻿
+namespace TournamentOrganizer_Desktop.Models
 {
     /// <summary>
     /// A participant object.
     /// </summary>
-    internal class Participant : IParticipant
+    public class SwissParticipant : IParticipant
     {
         #region Constants
 
@@ -23,7 +24,14 @@
         public uint ParticipantNumber { get; set; }
 
         /// <inheritdoc/>
+<<<<<<< HEAD
         public bool HasReceivedBye { get; set; }
+=======
+        public uint Score { get; set; }
+
+        /// <inheritdoc/>
+        public List<IParticipant> OpponentsPlayed { get; set; }
+>>>>>>> cb5d4af0efabfefbc2c710eba69b7c886d0346d3
 
         #endregion
 
@@ -32,10 +40,13 @@
         /// <summary>
         /// Base constructor.
         /// </summary>
-        public Participant()
+        public SwissParticipant()
         {
             Id = Guid.NewGuid();
             Name = DEFAULT_NAME;
+            ParticipantNumber = 0;
+            Score = 0;
+            OpponentsPlayed = [];
         }
 
         /// <summary>
@@ -43,13 +54,14 @@
         /// Allows passing in a name.
         /// </summary>
         /// <param name="name"></param>
-        public Participant(string name)
+        public SwissParticipant(string name)
         {
             Id = Guid.NewGuid();
             Name = name;
+            ParticipantNumber = 0;
+            Score = 0;
+            OpponentsPlayed = [];
         }
-
-
 
         #endregion
     }

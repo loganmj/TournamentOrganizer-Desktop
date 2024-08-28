@@ -24,6 +24,21 @@ public interface ITournament
     /// </summary>
     ObservableCollection<IParticipant> Participants { get; set; }
 
+    /// <summary>
+    /// The current round number.
+    /// </summary>
+    uint CurrentRound { get; set; }
+
+    /// <summary>
+    /// The number of rounds in the tournament.
+    /// </summary>
+    uint MaxRounds { get; set; }
+
+    /// <summary>
+    /// The pairings.
+    /// </summary>
+    ObservableCollection<IPairing> Pairings { get; set; }
+
     #endregion
 
     #region Methods
@@ -31,14 +46,24 @@ public interface ITournament
     /// <summary>
     /// Adds a participant to the tournament.
     /// </summary>
-    /// <param name="participant"></param>
-    void AddParticipant(IParticipant participant);
+    /// <param name="name"></param>
+    void AddParticipant(string name);
 
     /// <summary>
     /// Removes a participant from the tournament.
     /// </summary>
-    /// <param name="Name"></param>
-    void RemoveParticipant(string Name);
+    /// <param name="id"></param>
+    void RemoveParticipant(Guid id);
+
+    /// <summary>
+    /// Starts the tournament and calculates pairings for the first round.
+    /// </summary>
+    void StartTournament();
+
+    /// <summary>
+    /// Tallies scores and calculates pairings for the next round of the tournament.
+    /// </summary>
+    void MoveNextRound();
 
     #endregion
 }

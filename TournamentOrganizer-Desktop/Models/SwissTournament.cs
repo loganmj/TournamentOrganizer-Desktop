@@ -69,6 +69,8 @@ public partial class SwissTournament : ObservableObject, ITournament
         Participants = [];
         Pairings = [];
     }
+        Pairings = [];
+    }
 
     #endregion
 
@@ -103,6 +105,48 @@ public partial class SwissTournament : ObservableObject, ITournament
         for (int i = 0; i < sortedParticipants.Count(); i += 2)
         {
             if (i + 1 < sortedParticipants.Count())
+            {
+
+            }
+        }
+    }
+
+    /// <summary>
+    /// Calculates the new scores for each participant.
+    /// </summary>
+    private void CalculateScores()
+    {
+        // TODO
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Calculates the number of rounds based on the number of participants.
+    /// </summary>
+    private void CalculateMaxRounds()
+    {
+        MaxRounds = (uint)Math.Ceiling(Math.Log2(Participants.Count));
+    }
+
+    /// <summary>
+    /// Calculates pairings based on the current participants.
+    /// </summary>
+    private void CalculatePairings()
+    {
+        // Sort by score in descending order
+        var sortedParticipants = Participants.OrderByDescending(p => p.Score).ToList();
+        Pairings.Clear();
+
+        // If there are an odd number of participants, give the last participant a bye.
+        // Do not give the same participant a bye more than once per tournament.
+
+        // TODO: Match pairings from beginning to end, avoiding matching the same pairings twice.
+        for (int i = 0; i < sortedParticipants.Count; i += 2)
+        {
+            if (i + 1 < sortedParticipants.Count)
             {
 
             }
