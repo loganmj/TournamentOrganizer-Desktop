@@ -13,7 +13,7 @@
 
    <Grid>
 
-      <!-- Landing view -->
+      <!-- Start view -->
       <StackPanel Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.AppStarted}}">
          <Label Content="Welcome"
                HorizontalAlignment="Center"/>
@@ -32,31 +32,65 @@
          </StackPanel>
       </StackPanel>
       
-      <!-- Tournament view -->
-      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
+      <!-- Setup Tournament view -->
+      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentSetup}}">
          <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
          </Grid.RowDefinitions>
-         <Label Grid.Row="0" 
-                Content="{Binding Tournament.Name, StringFormat='Tournament Name: {0}'}"></Label>
+         <TextBlock Grid.Row="0"
+                    Margin="5,5,5,5">
+            <Run Text="Tournament: "/>
+            <Run Text="{Binding Tournament.Name}"/>
+         </TextBlock>
          <StackPanel Grid.Row="1"
                      Orientation="Horizontal">
             <Button Style="{StaticResource ButtonStyle}"
-        Content="Add Participant"
-        Command="{Binding AddParticipantButtonClickCommand}"/>
+                    Content="Add Participant"
+                    Command="{Binding AddParticipantButtonClickCommand}"/>
             <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding NewParticipantNameInput}" MaxLength="30"></TextBox>
+            <Button Style="{StaticResource ButtonStyle}"
+                    Content="Start"
+                    Command="{Binding StartTournamentButtonClickCommand}"/>
          </StackPanel>
          <ListView Grid.Row="2"
                    ItemsSource="{Binding Tournament.Participants}"
-                   ScrollViewer.VerticalScrollBarVisibility="Auto"
-                   ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                <GridView>
                   <GridViewColumn Header="#" Width="35" DisplayMemberBinding="{Binding ParticipantNumber}"/>
                   <GridViewColumn Header="Participant" Width="250" DisplayMemberBinding="{Binding Name}"/>
-                  <GridViewColumn Header="ID" Width="250" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                  <GridViewColumn Header="ID" Width="250" DisplayMemberBinding="{Binding Id}"/>
+               </GridView>
+            </ListView.View>
+         </ListView>
+      </Grid>
+      
+      <!-- Active Tournament view -->
+      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+         </Grid.RowDefinitions>
+         <TextBlock>
+            <Run Text="Tournament: "/>
+            <Run Text="{Binding Tournament.Name}"/>
+            <LineBreak/>
+            <Run Text="Round: "/>
+            <Run Text="{Binding Tournament.CurrentRound}"/>
+            <Run Text=" out of "/>
+            <Run Text="{Binding Tournament.MaxRounds}"/>
+         </TextBlock>
+         <ListView Grid.Row="1" 
+                   ItemsSource="{Binding Tournament.Pairings}"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.View>
+               <GridView>
+                  <GridViewColumn Header="#" Width="35" DisplayMemberBinding="{Binding Participant1.ParticipantNumber}"/>
+                  <GridViewColumn Header="Player 1 Name" Width="250" DisplayMemberBinding="{Binding Participant1.Name}"/>
+                  <GridViewColumn Header="#" Width="35" DisplayMemberBinding="{Binding Participant2.ParticipantNumber}"/>
+                  <GridViewColumn Header="Player 2 Name" Width="250" DisplayMemberBinding="{Binding Participant2.Name}"/>
                </GridView>
             </ListView.View>
          </ListView>

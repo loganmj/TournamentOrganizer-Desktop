@@ -22,6 +22,16 @@ namespace TournamentOrganizer_Desktop.Models
         /// </summary>
         uint ParticipantNumber { get; set; }
 
+        /// <summary>
+        /// Tracks the cumulative tournament score of the participant.
+        /// </summary>
+        uint Score { get; set; }
+
+        /// <summary>
+        /// Tracks the opponents that the participant has been paired with.
+        /// </summary>
+        List<IParticipant> OpponentsPlayed { get; set; }
+
         #endregion
     }
 }
