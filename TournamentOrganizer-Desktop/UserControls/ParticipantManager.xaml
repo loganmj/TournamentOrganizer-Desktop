@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="TournamentOrganizer_Desktop.UserControls.ParticipantManager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             x:Name="this"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" 
+             d:DesignWidth="500">
+    <Grid>
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="350"/>
+         <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <TextBlock>
+         <Run Text="Name: "/>
+         <Run Text="{Binding Participant.Name, ElementName=this}"/>
+      </TextBlock>
+      <Button Grid.Column="1" 
+              Style="{StaticResource ButtonStyle}"
+              Width="60"
+              Content="Remove"/>
+   </Grid>
+</UserControl>

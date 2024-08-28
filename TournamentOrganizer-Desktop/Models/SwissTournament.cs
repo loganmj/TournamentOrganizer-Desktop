@@ -130,7 +130,7 @@ public partial class SwissTournament : ObservableObject, ITournament
             return;
         }
 
-        Participants.Add(new SwissParticipant(name)
+        Participants.Add(new Participant(name)
         {
             ParticipantNumber = (uint)Participants.Count
         });

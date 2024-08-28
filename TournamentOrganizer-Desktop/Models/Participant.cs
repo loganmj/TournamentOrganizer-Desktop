@@ -4,7 +4,7 @@ namespace TournamentOrganizer_Desktop.Models
     /// <summary>
     /// A participant object.
     /// </summary>
-    public class SwissParticipant : IParticipant
+    public class Participant : IParticipant
     {
         #region Constants
 
@@ -39,7 +39,7 @@ namespace TournamentOrganizer_Desktop.Models
         /// <summary>
         /// Base constructor.
         /// </summary>
-        public SwissParticipant()
+        public Participant()
         {
             Id = Guid.NewGuid();
             Name = DEFAULT_NAME;
@@ -53,7 +53,7 @@ namespace TournamentOrganizer_Desktop.Models
         /// Allows passing in a name.
         /// </summary>
         /// <param name="name"></param>
-        public SwissParticipant(string name)
+        public Participant(string name)
         {
             Id = Guid.NewGuid();
             Name = name;

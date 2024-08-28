@@ -29,7 +29,7 @@ namespace TournamentOrganizer_Desktop.Models
         public Pairing(IParticipant participant1)
         {
             Participant1 = participant1;
-            Participant2 = new SwissParticipant("BYE");
+            Participant2 = new Participant("BYE");
             IsBye = true;
         }
 

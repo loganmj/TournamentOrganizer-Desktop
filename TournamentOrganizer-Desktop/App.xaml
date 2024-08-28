@@ -7,7 +7,7 @@
     <Application.Resources>
 
         <!-- Styles -->
-        <Style x:Key="TextBoxStyle"
+         <Style x:Key="TextBoxStyle"
                TargetType="TextBox">
             <Setter Property="BorderBrush"
                     Value="Black"/>
@@ -21,15 +21,15 @@
                     Value="250"/>
             <Setter Property="Margin"
                     Value="5,5,5,5"/>
-        </Style>
-       
-        <Style x:Key="ButtonStyle"
+         </Style>
+
+         <Style x:Key="ButtonStyle"
                TargetType="Button">
             <Setter Property="Width"
                     Value="150"/>
             <Setter Property="Margin"
                     Value="5,5,5,5"/>
-        </Style>
+         </Style>
        
        <!-- Converters -->
        <viewModels:AppStateToVisibilityConverter x:Key="AppStateToVisibilityConverter" />
