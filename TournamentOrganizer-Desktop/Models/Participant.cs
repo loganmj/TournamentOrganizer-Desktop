@@ -4,7 +4,7 @@ namespace TournamentOrganizer_Desktop.Models
     /// <summary>
     /// A participant object.
     /// </summary>
-    public class SwissParticipant : ISwissParticipant
+    public class SwissParticipant : IParticipant
     {
         #region Constants
 

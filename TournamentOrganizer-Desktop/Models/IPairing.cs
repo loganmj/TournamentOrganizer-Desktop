@@ -17,5 +17,10 @@ public interface IPairing
     /// </summary>
     IParticipant Participant2 { get; set; }
 
+    /// <summary>
+    /// Is the pairing a bye.
+    /// </summary>
+    bool IsBye { get; set; }
+
     #endregion
 }

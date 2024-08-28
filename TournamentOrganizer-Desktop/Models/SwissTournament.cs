@@ -87,8 +87,21 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// </summary>
     private void CalculatePairings()
     {
-        // TODO: Sort by score in descending order
+        // Sort by score in descending order
+        var sortedParticipants = Participants.OrderByDescending(p => p.Score).ToList();
+        Pairings.Clear();
+
+        // If there are an odd number of participants, give the last participant a bye.
+        // Do not give the same participant a bye more than once per tournament.
+
         // TODO: Match pairings from beginning to end, avoiding matching the same pairings twice.
+        for (int i = 0; i < sortedParticipants.Count; i += 2)
+        {
+            if (i + 1 < sortedParticipants.Count)
+            {
+
+            }
+        }
     }
 
     /// <summary>
