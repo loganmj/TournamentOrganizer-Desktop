@@ -13,7 +13,7 @@
 
    <Grid>
 
-      <!-- Landing view -->
+      <!-- Start view -->
       <StackPanel Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.AppStarted}}">
          <Label Content="Welcome"
                HorizontalAlignment="Center"/>
@@ -32,8 +32,8 @@
          </StackPanel>
       </StackPanel>
       
-      <!-- Tournament view -->
-      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
+      <!-- Setup Tournament view -->
+      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentSetup}}">
          <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -44,9 +44,12 @@
          <StackPanel Grid.Row="1"
                      Orientation="Horizontal">
             <Button Style="{StaticResource ButtonStyle}"
-        Content="Add Participant"
-        Command="{Binding AddParticipantButtonClickCommand}"/>
+                    Content="Add Participant"
+                    Command="{Binding AddParticipantButtonClickCommand}"/>
             <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding NewParticipantNameInput}" MaxLength="30"></TextBox>
+            <Button Style="{StaticResource ButtonStyle}"
+                    Content="Start"
+                    Command="{Binding StartTournamentButtonClickCommand}"/>
          </StackPanel>
          <ListView Grid.Row="2"
                    ItemsSource="{Binding Tournament.Participants}"
@@ -60,6 +63,11 @@
                </GridView>
             </ListView.View>
          </ListView>
+      </Grid>
+      
+      <!-- Active Tournament view -->
+      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
+         <Label Content="{Binding Tournament, StringFormat='Tournament: {0}'}"/>
       </Grid>
    </Grid>
 </Window>

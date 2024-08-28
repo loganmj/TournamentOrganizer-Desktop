@@ -5,8 +5,9 @@
     /// </summary>
     public enum AppState
     {
-        AppStarted = 0,
-        TournamentStarted = 1,
+        AppStarted,
+        TournamentSetup,
+        TournamentStarted,
         TournamentCompleted
     }
 }

@@ -50,7 +50,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private void OnCreateButtonClick()
     {
         Tournament = new SwissTournament(TournamentNameInput);
-        State = AppState.TournamentStarted;
+        State = AppState.TournamentSetup;
     }
 
     /// <summary>
@@ -60,6 +60,15 @@ public partial class MainWindowViewModel : ViewModelBase
     private void OnAddParticipantButtonClick()
     {
         Tournament?.AddParticipant(new Participant(NewParticipantNameInput));
+    }
+
+    /// <summary>
+    /// Handles the Start Tournament button being clicked.
+    /// </summary>
+    [RelayCommand]
+    private void OnStartTournamentButtonClick()
+    {
+        State = AppState.TournamentStarted;
     }
 
     #endregion
