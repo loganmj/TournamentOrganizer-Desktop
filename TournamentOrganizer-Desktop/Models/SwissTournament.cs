@@ -33,6 +33,12 @@ public partial class SwissTournament : ObservableObject, ITournament
     [ObservableProperty]
     private ObservableCollection<IParticipant> _participants;
 
+    [ObservableProperty]
+    private uint _rounds;
+
+    [ObservableProperty]
+    private ObservableCollection<IPairing> _pairings;
+
     #endregion
 
     #region Constructors
@@ -45,6 +51,8 @@ public partial class SwissTournament : ObservableObject, ITournament
         Id = Guid.NewGuid();
         Name = DEFAULT_NAME;
         Participants = [];
+        Rounds = 0;
+        Pairings = [];
     }
 
     /// <summary>
@@ -57,6 +65,8 @@ public partial class SwissTournament : ObservableObject, ITournament
         Id = Guid.NewGuid();
         Name = name ?? DEFAULT_NAME;
         Participants = [];
+        Rounds = 0;
+        Pairings = [];
     }
 
     #endregion
@@ -67,7 +77,7 @@ public partial class SwissTournament : ObservableObject, ITournament
     public void AddParticipant(IParticipant participant)
     {
         // Don't add participant if tournament is full.
-        if (Participants.Count >= MAX_PARTICIPANTS) 
+        if (Participants.Count >= MAX_PARTICIPANTS)
         {
             return;
         }
@@ -91,6 +101,18 @@ public partial class SwissTournament : ObservableObject, ITournament
     public override string ToString()
     {
         return $"[Swiss Tournament]: ID={Id}, Name={Name}, Participants={string.Join(',', Participants)}";
+    }
+
+    /// <inheritdoc/>
+    public void StartTournament()
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <inheritdoc/>
+    public void MoveNextRound()
+    {
+        throw new NotImplementedException();
     }
 
     #endregion

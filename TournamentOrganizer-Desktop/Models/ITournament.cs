@@ -24,6 +24,16 @@ public interface ITournament
     /// </summary>
     ObservableCollection<IParticipant> Participants { get; set; }
 
+    /// <summary>
+    /// The number of rounds in the tournament.
+    /// </summary>
+    uint Rounds { get; set; }
+
+    /// <summary>
+    /// The pairings.
+    /// </summary>
+    ObservableCollection<IPairing> Pairings { get; set; }
+
     #endregion
 
     #region Methods
@@ -39,6 +49,16 @@ public interface ITournament
     /// </summary>
     /// <param name="Name"></param>
     void RemoveParticipant(string Name);
+
+    /// <summary>
+    /// Starts the tournament and calculates pairings for the first round.
+    /// </summary>
+    void StartTournament();
+
+    /// <summary>
+    /// Tallies scores and calculates pairings for the next round of the tournament.
+    /// </summary>
+    void MoveNextRound();
 
     #endregion
 }
