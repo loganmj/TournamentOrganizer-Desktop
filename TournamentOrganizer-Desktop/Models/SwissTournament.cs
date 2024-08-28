@@ -74,7 +74,7 @@ public partial class SwissTournament : ObservableObject, ITournament
     #region Public Methods
 
     /// <inheritdoc/>
-    public void AddParticipant(IParticipant participant)
+    public void AddParticipant(string name)
     {
         // Don't add participant if tournament is full.
         if (Participants.Count >= MAX_PARTICIPANTS)
@@ -82,19 +82,23 @@ public partial class SwissTournament : ObservableObject, ITournament
             return;
         }
 
-        participant.ParticipantNumber = (uint)Participants.Count;
-        Participants.Add(participant);
+        Participants.Add(new SwissParticipant(name)
+        {
+            ParticipantNumber = (uint)Participants.Count
+        });
     }
 
     /// <inheritdoc/>
-    public void RemoveParticipant(string Name)
+    public void RemoveParticipant(Guid id)
     {
-        var targetParticipant = Participants.FirstOrDefault(p => p.Name == Name);
+        var targetParticipant = Participants.FirstOrDefault(p => p.Id == id);
 
-        if (targetParticipant != null)
+        if (targetParticipant == null)
         {
-            Participants.Remove(targetParticipant);
+            return;
         }
+
+        Participants.Remove(targetParticipant);
     }
 
     /// <inheritdoc/>

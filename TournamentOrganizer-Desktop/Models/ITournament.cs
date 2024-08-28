@@ -41,14 +41,14 @@ public interface ITournament
     /// <summary>
     /// Adds a participant to the tournament.
     /// </summary>
-    /// <param name="participant"></param>
-    void AddParticipant(IParticipant participant);
+    /// <param name="name"></param>
+    void AddParticipant(string name);
 
     /// <summary>
     /// Removes a participant from the tournament.
     /// </summary>
-    /// <param name="Name"></param>
-    void RemoveParticipant(string Name);
+    /// <param name="id"></param>
+    void RemoveParticipant(Guid id);
 
     /// <summary>
     /// Starts the tournament and calculates pairings for the first round.

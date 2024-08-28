@@ -59,7 +59,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void OnAddParticipantButtonClick()
     {
-        Tournament?.AddParticipant(new Participant(NewParticipantNameInput));
+        Tournament?.AddParticipant(NewParticipantNameInput);
     }
 
     /// <summary>
