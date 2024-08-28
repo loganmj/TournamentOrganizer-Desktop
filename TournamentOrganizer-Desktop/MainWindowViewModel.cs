@@ -68,6 +68,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void OnStartTournamentButtonClick()
     {
+        Tournament?.StartTournament();
         State = AppState.TournamentStarted;
     }
 
