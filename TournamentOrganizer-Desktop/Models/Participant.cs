@@ -22,6 +22,9 @@
         /// <inheritdoc/>
         public uint ParticipantNumber { get; set; }
 
+        /// <inheritdoc/>
+        public bool HasReceivedBye { get; set; }
+
         #endregion
 
         #region Constructors

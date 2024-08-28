@@ -22,6 +22,11 @@ namespace TournamentOrganizer_Desktop.Models
         /// </summary>
         uint ParticipantNumber { get; set; }
 
+        /// <summary>
+        /// Has the participant received a bye.
+        /// </summary>
+        bool HasReceivedBye { get; set; }
+
         #endregion
     }
 }
