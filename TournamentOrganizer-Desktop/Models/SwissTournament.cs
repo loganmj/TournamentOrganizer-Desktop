@@ -34,7 +34,10 @@ public partial class SwissTournament : ObservableObject, ITournament
     private ObservableCollection<IParticipant> _participants;
 
     [ObservableProperty]
-    private uint _rounds;
+    private uint _currentRound;
+
+    [ObservableProperty]
+    private uint _maxRounds;
 
     [ObservableProperty]
     private ObservableCollection<IPairing> _pairings;
@@ -51,7 +54,6 @@ public partial class SwissTournament : ObservableObject, ITournament
         Id = Guid.NewGuid();
         Name = DEFAULT_NAME;
         Participants = [];
-        Rounds = 0;
         Pairings = [];
     }
 
@@ -65,8 +67,36 @@ public partial class SwissTournament : ObservableObject, ITournament
         Id = Guid.NewGuid();
         Name = name ?? DEFAULT_NAME;
         Participants = [];
-        Rounds = 0;
         Pairings = [];
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Calculates the number of rounds based on the number of participants.
+    /// </summary>
+    private void CalculateMaxRounds()
+    {
+        MaxRounds = (uint)Math.Ceiling(Math.Log2(Participants.Count));
+    }
+
+    /// <summary>
+    /// Calculates pairings based on the current participants.
+    /// </summary>
+    private void CalculatePairings()
+    {
+        // TODO: Sort by score in descending order
+        // TODO: Match pairings from beginning to end, avoiding matching the same pairings twice.
+    }
+
+    /// <summary>
+    /// Calculates the new scores for each participant.
+    /// </summary>
+    private void CalculateScores()
+    {
+        // TODO
     }
 
     #endregion
@@ -110,13 +140,23 @@ public partial class SwissTournament : ObservableObject, ITournament
     /// <inheritdoc/>
     public void StartTournament()
     {
-        throw new NotImplementedException();
+        CalculateMaxRounds();
+        CalculatePairings();
+        CurrentRound = 1;
     }
 
     /// <inheritdoc/>
     public void MoveNextRound()
     {
-        throw new NotImplementedException();
+        // Do not advance to next round if we are on the last round.
+        if (CurrentRound == MaxRounds)
+        {
+            return;
+        }
+
+        CalculateScores();
+        CalculatePairings();
+        CurrentRound++;
     }
 
     #endregion

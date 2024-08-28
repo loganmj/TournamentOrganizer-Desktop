@@ -25,9 +25,14 @@ public interface ITournament
     ObservableCollection<IParticipant> Participants { get; set; }
 
     /// <summary>
+    /// The current round number.
+    /// </summary>
+    uint CurrentRound { get; set; }
+
+    /// <summary>
     /// The number of rounds in the tournament.
     /// </summary>
-    uint Rounds { get; set; }
+    uint MaxRounds { get; set; }
 
     /// <summary>
     /// The pairings.
