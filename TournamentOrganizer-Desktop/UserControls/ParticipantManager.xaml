@@ -19,6 +19,8 @@
       <Button Grid.Column="1" 
               Style="{StaticResource ButtonStyle}"
               Width="60"
-              Content="Remove"/>
+              Content="Remove"
+              Command="{Binding RemoveParticipant, ElementName=this}"
+              CommandParameter="{Binding Participant, ElementName=this}"/>
    </Grid>
 </UserControl>

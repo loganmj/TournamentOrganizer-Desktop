@@ -29,7 +29,7 @@
                      Text="{Binding TournamentNameInput}"/>
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Create"
-                    Command="{Binding CreateButtonClickCommand}"/>
+                    Command="{Binding CreateTournamentCommand}"/>
          </StackPanel>
       </StackPanel>
       
@@ -50,18 +50,20 @@
                      Orientation="Horizontal">
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Add Participant"
-                    Command="{Binding AddParticipantButtonClickCommand}"/>
+                    Command="{Binding AddParticipantCommand}"/>
             <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding NewParticipantNameInput}" MaxLength="30"></TextBox>
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Start"
-                    Command="{Binding StartTournamentButtonClickCommand}"/>
+                    Command="{Binding StartTournamentCommand}"/>
          </StackPanel>
 
          <ListBox Grid.Row="2"
                   ItemsSource="{Binding Tournament.Participants}">
             <ListBox.ItemTemplate>
                <DataTemplate>
-                  <userControls:ParticipantManager Participant="{Binding}"/>
+                  <userControls:ParticipantManager 
+                     Participant="{Binding}" 
+                     RemoveParticipant="{Binding DataContext.RemoveParticipantCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
                </DataTemplate>
             </ListBox.ItemTemplate>
          </ListBox>

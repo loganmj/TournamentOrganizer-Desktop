@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using TournamentOrganizer_Desktop.Models;
 
 namespace TournamentOrganizer_Desktop.UserControls
@@ -20,6 +21,29 @@ namespace TournamentOrganizer_Desktop.UserControls
             typeof(IParticipant),
             typeof(ParticipantManager),
             new PropertyMetadata(null));
+
+        /// <summary>
+        /// Exposes a RemoveParticipant command as a dependency property
+        /// </summary>
+        public static readonly DependencyProperty RemoveParticipantProperty =
+    DependencyProperty.Register(
+        nameof(RemoveParticipant),
+        typeof(ICommand),
+        typeof(ParticipantManager),
+        new PropertyMetadata(null));
+
+        #endregion
+
+        #region Commands
+
+        /// <summary>
+        /// Command to remove the Participant.
+        /// </summary>
+        public ICommand RemoveParticipant
+        {
+            get { return (ICommand)GetValue(RemoveParticipantProperty); }
+            set { SetValue(RemoveParticipantProperty, value); }
+        }
 
         #endregion
 
