@@ -23,11 +23,10 @@ namespace TournamentOrganizer_Desktop.Models
         uint ParticipantNumber { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
         /// Has the participant received a bye.
         /// </summary>
         bool HasReceivedBye { get; set; }
-=======
+
         /// Tracks the cumulative tournament score of the participant.
         /// </summary>
         uint Score { get; set; }
@@ -36,7 +35,6 @@ namespace TournamentOrganizer_Desktop.Models
         /// Tracks the opponents that the participant has been paired with.
         /// </summary>
         List<IParticipant> OpponentsPlayed { get; set; }
->>>>>>> cb5d4af0efabfefbc2c710eba69b7c886d0346d3
 
         #endregion
     }

@@ -24,14 +24,13 @@ namespace TournamentOrganizer_Desktop.Models
         public uint ParticipantNumber { get; set; }
 
         /// <inheritdoc/>
-<<<<<<< HEAD
         public bool HasReceivedBye { get; set; }
-=======
+
+        /// <inheritdoc/>
         public uint Score { get; set; }
 
         /// <inheritdoc/>
         public List<IParticipant> OpponentsPlayed { get; set; }
->>>>>>> cb5d4af0efabfefbc2c710eba69b7c886d0346d3
 
         #endregion
 
