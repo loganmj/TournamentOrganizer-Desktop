@@ -93,21 +93,32 @@ public partial class SwissTournament : ObservableObject, ITournament
 
         // If there are an odd number of participants, give the last participant a bye.
         // Do not give the same participant a bye more than once per tournament.
-        if (sortedParticipants.Count() % 2 != 0)
+        if (sortedParticipants.Count % 2 != 0)
         {
             // Check if the person in last already had a bye
             var byeParticipant = sortedParticipants.LastOrDefault(p => !p.HasReceivedBye);
+
+            // Create a bye pairing
+            if (byeParticipant != null)
+            {
+                Pairings.Add(new Pairing(byeParticipant));
+                byeParticipant.HasReceivedBye = true;
+            }
         }
 
         // TODO: Match pairings from beginning to end, avoiding matching the same pairings twice.
-        for (int i = 0; i < sortedParticipants.Count(); i += 2)
+        for (int i = 0; i < sortedParticipants.Count; i += 2)
         {
-            if (i + 1 < sortedParticipants.Count())
+            // Exit if no valid pairing can be made.
+            // TODO: Think of a better way to handle this.
+            if (i + 1 >= sortedParticipants.Count)
             {
-                // TODO: Avoid repeating pairings
-                var pairing = new Pairing(sortedParticipants[i], sortedParticipants[i + 1]);
-                Pairings.Add(pairing);
+                continue;
             }
+
+            // TODO: Avoid repeating pairings
+            var pairing = new Pairing(sortedParticipants[i], sortedParticipants[i + 1]);
+            Pairings.Add(pairing);
         }
     }
 
