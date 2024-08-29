@@ -126,11 +126,25 @@ public partial class SwissTournament : ObservableObject, ITournament
     }
 
     /// <summary>
-    /// Calculates the new scores for each participant.
+    /// Adds the round scores to the cumulative total for each participant.
     /// </summary>
     private void CalculateScores()
     {
-        // TODO
+        foreach (var pairing in Pairings)
+        {
+            // Calculate score for participant 1.
+            // TODO
+            pairing.Participant1.Score += pairing.RoundScoreParticipant1;
+
+            // Only calculate score for participant 2 if pairing is not a bye.
+            if (pairing.IsBye)
+            {
+                continue;
+            }
+
+            // Calculate score for participant 2.
+            pairing.Participant2.Score += pairing.RoundScoreParticipant2;
+        }
     }
 
     #endregion

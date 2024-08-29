@@ -22,5 +22,15 @@ public interface IPairing
     /// </summary>
     bool IsBye { get; set; }
 
+    /// <summary>
+    /// The round score for participant 1.
+    /// </summary>
+    uint RoundScoreParticipant1 { get; set; }
+
+    /// <summary>
+    /// The round score for participant 2.
+    /// </summary>
+    uint RoundScoreParticipant2 { get; set; }
+
     #endregion
 }

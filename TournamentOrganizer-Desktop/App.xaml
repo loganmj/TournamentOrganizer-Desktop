@@ -33,5 +33,6 @@
        
        <!-- Converters -->
        <viewModels:AppStateToVisibilityConverter x:Key="AppStateToVisibilityConverter" />
+       
     </Application.Resources>
 </Application>
