@@ -36,6 +36,11 @@ namespace TournamentOrganizer_Desktop.Models
         /// </summary>
         List<IParticipant> OpponentsPlayed { get; set; }
 
+        /// <summary>
+        /// Has the participant been paired this round.
+        /// </summary>
+        bool IsPaired { get; set; }
+
         #endregion
     }
 }

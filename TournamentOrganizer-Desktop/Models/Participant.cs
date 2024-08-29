@@ -32,6 +32,9 @@ namespace TournamentOrganizer_Desktop.Models
         /// <inheritdoc/>
         public List<IParticipant> OpponentsPlayed { get; set; }
 
+        /// <inheritdoc/>
+        public bool IsPaired { get; set; }
+
         #endregion
 
         #region Constructors
