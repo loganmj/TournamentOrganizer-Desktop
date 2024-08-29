@@ -91,26 +91,6 @@ public partial class SwissTournament : ObservableObject, ITournament
         var sortedParticipants = Participants.OrderByDescending(p => p.Score).ToList();
         Pairings.Clear();
 
-        // If there are an odd number of participants, give the last participant a bye.
-        // Do not give the same participant a bye more than once per tournament.
-        if (sortedParticipants.Count % 2 != 0)
-        {
-            /*
-
-            // Check if the person in last already had a bye
-            var byeParticipant = sortedParticipants.LastOrDefault(p => !p.HasReceivedBye);
-
-            // Create a bye pairing
-            if (byeParticipant != null)
-            {
-                Pairings.Add(new Pairing(byeParticipant));
-                byeParticipant.HasReceivedBye = true;
-                byeParticipant.IsPaired = true;
-            }
-
-            */
-        }
-
         foreach (var participant in sortedParticipants)
         {
             // Skip if participant has already been paired
@@ -143,40 +123,6 @@ public partial class SwissTournament : ObservableObject, ITournament
 
             Pairings.Add(pairing);
         }
-
-        /*
-
-        // TODO: Match pairings from beginning to end, avoiding matching the same pairings twice.
-        for (int i = 0; i < sortedParticipants.Count; i += 2)
-        {
-            // Exit if no valid pairing can be made.
-            // TODO: Think of a better way to handle this.
-            if (i + 1 >= sortedParticipants.Count)
-            {
-                continue;
-            }
-
-            // TODO: Avoid repeating pairings
-            IPairing pairing;
-            var participant1 = sortedParticipants[i];
-            var participant2 = sortedParticipants.Skip(i+1).FirstOrDefault(p => !p.OpponentsPlayed.Contains(participant1));
-
-            if (participant2 == null)
-            {
-                pairing = new Pairing(participant1);
-                participant1.HasReceivedBye = true;
-            }
-            else
-            {
-                pairing = new Pairing(sortedParticipants[i], participant2);
-                participant1.OpponentsPlayed.Add(participant2);
-                participant2.OpponentsPlayed.Add(participant1);
-            }
-
-            Pairings.Add(pairing);
-        }
-
-        */
     }
 
     /// <summary>
