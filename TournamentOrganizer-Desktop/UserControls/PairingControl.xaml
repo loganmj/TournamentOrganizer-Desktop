@@ -7,7 +7,7 @@
              x:Name="this"
              mc:Ignorable="d" 
              d:DesignHeight="50" 
-             d:DesignWidth="800">
+             d:DesignWidth="575">
    <UserControl.Resources>
       <Style x:Key="PairingTextBlockStyle" 
              TargetType="TextBlock">
@@ -29,12 +29,13 @@
                 Margin="5,5,5,5">
       <Button Style="{StaticResource PairingButtonStyle}"
               Content="+"
-              IsEnabled="{Binding Pairing.IsBye, ElementName=this}"/>
+              IsEnabled="{Binding Pairing.IsBye, Converter={StaticResource BooleanInverter}, ElementName=this}"/>
       <TextBlock Style="{StaticResource PairingTextBlockStyle}" 
                  Text="{Binding Pairing.RoundScoreParticipant1, ElementName=this}"
                  Width="25"
                  TextAlignment="Center"/>
-      <TextBlock Style="{StaticResource PairingTextBlockStyle}">
+      <TextBlock Style="{StaticResource PairingTextBlockStyle}"
+                 Width="400">
          <Run Text="{Binding Pairing.Participant1.Name, ElementName=this}"/>
          <Run Text=" - VS - "/>
          <Run Text="{Binding Pairing.Participant2.Name, ElementName=this}"/>
@@ -45,6 +46,6 @@
                  Visibility="Visible"/>
       <Button Style="{StaticResource PairingButtonStyle}"
               Content="+"
-              IsEnabled="{Binding Pairing.IsBye, ElementName=this}"/>
+              IsEnabled="{Binding Pairing.IsBye, Converter={StaticResource BooleanInverter}, ElementName=this}"/>
    </StackPanel>
 </UserControl>
