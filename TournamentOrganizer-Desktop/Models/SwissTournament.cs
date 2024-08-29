@@ -93,20 +93,90 @@ public partial class SwissTournament : ObservableObject, ITournament
 
         // If there are an odd number of participants, give the last participant a bye.
         // Do not give the same participant a bye more than once per tournament.
-        if (sortedParticipants.Count() % 2 != 0)
+        if (sortedParticipants.Count % 2 != 0)
         {
+            /*
+
             // Check if the person in last already had a bye
             var byeParticipant = sortedParticipants.LastOrDefault(p => !p.HasReceivedBye);
+
+            // Create a bye pairing
+            if (byeParticipant != null)
+            {
+                Pairings.Add(new Pairing(byeParticipant));
+                byeParticipant.HasReceivedBye = true;
+                byeParticipant.IsPaired = true;
+            }
+
+            */
         }
+
+        foreach (var participant in sortedParticipants)
+        {
+            // Skip if participant has already been paired
+            if (participant.IsPaired)
+            {
+                continue;
+            }
+
+            IPairing pairing;
+
+            // Find the first other unpaired participant that has not been matched with the participant
+            var opponent = sortedParticipants.FirstOrDefault(p => p != participant && !p.IsPaired && !p.OpponentsPlayed.Contains(participant));
+
+            if (opponent == null)
+            {
+                // If no suitable opponent is found, give the participant a bye.
+                pairing = new Pairing(participant);
+                participant.IsPaired = true;
+                participant.HasReceivedBye = true;
+            }
+            else
+            {
+                // Pair the participant with the opponent, recording that they have played each other.
+                pairing = new Pairing(participant, opponent);
+                participant.IsPaired = true;
+                participant.OpponentsPlayed.Add(opponent);
+                opponent.IsPaired = true;
+                opponent.OpponentsPlayed.Add(participant);
+            }
+
+            Pairings.Add(pairing);
+        }
+
+        /*
 
         // TODO: Match pairings from beginning to end, avoiding matching the same pairings twice.
-        for (int i = 0; i < sortedParticipants.Count(); i += 2)
+        for (int i = 0; i < sortedParticipants.Count; i += 2)
         {
-            if (i + 1 < sortedParticipants.Count())
+            // Exit if no valid pairing can be made.
+            // TODO: Think of a better way to handle this.
+            if (i + 1 >= sortedParticipants.Count)
             {
-
+                continue;
             }
+
+            // TODO: Avoid repeating pairings
+            IPairing pairing;
+            var participant1 = sortedParticipants[i];
+            var participant2 = sortedParticipants.Skip(i+1).FirstOrDefault(p => !p.OpponentsPlayed.Contains(participant1));
+
+            if (participant2 == null)
+            {
+                pairing = new Pairing(participant1);
+                participant1.HasReceivedBye = true;
+            }
+            else
+            {
+                pairing = new Pairing(sortedParticipants[i], participant2);
+                participant1.OpponentsPlayed.Add(participant2);
+                participant2.OpponentsPlayed.Add(participant1);
+            }
+
+            Pairings.Add(pairing);
         }
+
+        */
     }
 
     /// <summary>

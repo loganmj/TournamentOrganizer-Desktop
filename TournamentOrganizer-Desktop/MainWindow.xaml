@@ -84,18 +84,15 @@
             <Run Text=" out of "/>
             <Run Text="{Binding Tournament.MaxRounds}"/>
          </TextBlock>
-         <ListView Grid.Row="1" 
-                   ItemsSource="{Binding Tournament.Pairings}"
-                   ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <ListView.View>
-               <GridView>
-                  <GridViewColumn Header="#" Width="35" DisplayMemberBinding="{Binding Participant1.ParticipantNumber}"/>
-                  <GridViewColumn Header="Player 1 Name" Width="250" DisplayMemberBinding="{Binding Participant1.Name}"/>
-                  <GridViewColumn Header="#" Width="35" DisplayMemberBinding="{Binding Participant2.ParticipantNumber}"/>
-                  <GridViewColumn Header="Player 2 Name" Width="250" DisplayMemberBinding="{Binding Participant2.Name}"/>
-               </GridView>
-            </ListView.View>
-         </ListView>
+         <ListBox Grid.Row="1" 
+                  ItemsSource="{Binding Tournament.Pairings}">
+            <ListBox.ItemTemplate>
+               <DataTemplate>
+                  <userControls:PairingControl 
+                     Pairing="{Binding}"/>
+               </DataTemplate>
+            </ListBox.ItemTemplate>
+         </ListBox>
       </Grid>
    </Grid>
 </Window>
