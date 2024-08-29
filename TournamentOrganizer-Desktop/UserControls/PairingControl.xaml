@@ -28,22 +28,23 @@
     <StackPanel Orientation="Horizontal" 
                 Margin="5,5,5,5">
       <Button Style="{StaticResource PairingButtonStyle}"
-              Content="+"/>
+              Content="+"
+              IsEnabled="{Binding Pairing.IsBye, ElementName=this}"/>
       <TextBlock Style="{StaticResource PairingTextBlockStyle}" 
                  Text="{Binding Pairing.RoundScoreParticipant1, ElementName=this}"
                  Width="25"
-                 TextAlignment="Center"
-                 Visibility="Visible"/>
+                 TextAlignment="Center"/>
       <TextBlock Style="{StaticResource PairingTextBlockStyle}">
          <Run Text="{Binding Pairing.Participant1.Name, ElementName=this}"/>
          <Run Text=" - VS - "/>
          <Run Text="{Binding Pairing.Participant2.Name, ElementName=this}"/>
       </TextBlock>
       <TextBlock Style="{StaticResource PairingTextBlockStyle}" 
-                 Text="{Binding Pairing.RoundScoreParticipant1, ElementName=this}"
+                 Text="{Binding Pairing.RoundScoreParticipant2, ElementName=this}"
                  Width="25"
                  Visibility="Visible"/>
       <Button Style="{StaticResource PairingButtonStyle}"
-              Content="+"/>
+              Content="+"
+              IsEnabled="{Binding Pairing.IsBye, ElementName=this}"/>
    </StackPanel>
 </UserControl>

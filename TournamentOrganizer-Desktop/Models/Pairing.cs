@@ -37,6 +37,8 @@ public partial class Pairing : ObservableObject, IPairing
         Participant1 = participant1;
         Participant2 = new Participant("BYE");
         IsBye = true;
+        RoundScoreParticipant1 = 2;
+        RoundScoreParticipant2 = 0;
     }
 
     /// <summary>
