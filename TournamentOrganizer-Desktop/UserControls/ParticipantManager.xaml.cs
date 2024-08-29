@@ -41,8 +41,8 @@ namespace TournamentOrganizer_Desktop.UserControls
         /// </summary>
         public ICommand RemoveParticipant
         {
-            get { return (ICommand)GetValue(RemoveParticipantProperty); }
-            set { SetValue(RemoveParticipantProperty, value); }
+            get => (ICommand)GetValue(RemoveParticipantProperty);
+            set => SetValue(RemoveParticipantProperty, value);
         }
 
         #endregion
@@ -54,8 +54,8 @@ namespace TournamentOrganizer_Desktop.UserControls
         /// </summary>
         public IParticipant Participant
         {
-            get { return (IParticipant)GetValue(ParticipantProperty); }
-            set { SetValue(ParticipantProperty, value); }
+            get => (IParticipant)GetValue(ParticipantProperty);
+            set => SetValue(ParticipantProperty, value);
         }
 
         #endregion
