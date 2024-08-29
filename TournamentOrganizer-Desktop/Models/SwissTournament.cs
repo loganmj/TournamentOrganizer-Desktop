@@ -104,7 +104,9 @@ public partial class SwissTournament : ObservableObject, ITournament
         {
             if (i + 1 < sortedParticipants.Count())
             {
-
+                // TODO: Avoid repeating pairings
+                var pairing = new Pairing(sortedParticipants[i], sortedParticipants[i + 1]);
+                Pairings.Add(pairing);
             }
         }
     }
