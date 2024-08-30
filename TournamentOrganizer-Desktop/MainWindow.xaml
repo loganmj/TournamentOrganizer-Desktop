@@ -73,10 +73,11 @@
       <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
          <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="330"/>
+            <RowDefinition Height="305"/>
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
-         <TextBlock>
+         <TextBlock HorizontalAlignment="Center"
+                    FontSize="16">
             <Run Text="Tournament: "/>
             <Run Text="{Binding Tournament.Name}"/>
             <LineBreak/>
@@ -87,7 +88,8 @@
          </TextBlock>
          <ListBox Grid.Row="1" 
                   ItemsSource="{Binding Tournament.Pairings}"
-                  Focusable="False">
+                  Focusable="False"
+                  HorizontalAlignment="Center">
             <ListBox.ItemTemplate>
                <DataTemplate>
                   <userControls:PairingControl 
@@ -98,7 +100,9 @@
          <Button Grid.Row="2"
                  Style="{StaticResource ButtonStyle}"
                  Content="Next Round"
-                 HorizontalAlignment="Right"/>
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Command="{Binding MoveNextRoundCommand}"/>
       </Grid>
    </Grid>
 </Window>

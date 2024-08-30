@@ -78,5 +78,14 @@ public partial class MainWindowViewModel : ViewModelBase
         State = AppState.TournamentStarted;
     }
 
+    /// <summary>
+    /// Handles the NextRound button being clicked.
+    /// </summary>
+    [RelayCommand]
+    private void MoveNextRound()
+    {
+        Tournament?.MoveNextRound();
+    }
+
     #endregion
 }
