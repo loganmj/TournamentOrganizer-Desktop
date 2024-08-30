@@ -29,7 +29,8 @@
                 Margin="5,5,5,5">
       <Button Style="{StaticResource PairingButtonStyle}"
               Content="+"
-              IsEnabled="{Binding Pairing.IsBye, Converter={StaticResource BooleanInverter}, ElementName=this}"/>
+              IsEnabled="{Binding Pairing.IsBye, Converter={StaticResource BooleanInverter}, ElementName=this}"
+              Click="ScoreCounterButton_Click_Participant1"/>
       <TextBlock Style="{StaticResource PairingTextBlockStyle}" 
                  Text="{Binding Pairing.RoundScoreParticipant1, ElementName=this}"
                  Width="25"
@@ -46,6 +47,7 @@
                  Visibility="Visible"/>
       <Button Style="{StaticResource PairingButtonStyle}"
               Content="+"
-              IsEnabled="{Binding Pairing.IsBye, Converter={StaticResource BooleanInverter}, ElementName=this}"/>
+              IsEnabled="{Binding Pairing.IsBye, Converter={StaticResource BooleanInverter}, ElementName=this}"
+              Click="ScoreCounterButton_Click_Participant2"/>
    </StackPanel>
 </UserControl>
