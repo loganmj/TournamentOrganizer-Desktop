@@ -85,7 +85,8 @@
             <Run Text="{Binding Tournament.MaxRounds}"/>
          </TextBlock>
          <ListBox Grid.Row="1" 
-                  ItemsSource="{Binding Tournament.Pairings}">
+                  ItemsSource="{Binding Tournament.Pairings}"
+                  Focusable="False">
             <ListBox.ItemTemplate>
                <DataTemplate>
                   <userControls:PairingControl 

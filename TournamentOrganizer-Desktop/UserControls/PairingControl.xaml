@@ -7,12 +7,47 @@
              x:Name="this"
              mc:Ignorable="d" 
              d:DesignHeight="50" 
-             d:DesignWidth="800">
-    <Border BorderThickness="2">
-      <TextBlock>
+             d:DesignWidth="575">
+   <UserControl.Resources>
+      <Style x:Key="PairingTextBlockStyle" 
+             TargetType="TextBlock">
+         <Setter Property="FontSize" Value="25"/>
+         <Setter Property="Margin" Value="5,5,5,5"/>
+         <Setter Property="TextAlignment" Value="Center"/>
+      </Style>
+
+      <Style x:Key="PairingButtonStyle"
+             TargetType="Button">
+         <Setter Property="Margin" Value="5,5,5,5"/>
+         <Setter Property="Width" Value="30"/>
+         <Setter Property="Height" Value="35"/>
+         <Setter Property="FontSize" Value="25"/>
+         <Setter Property="VerticalAlignment" Value="Center"/>
+      </Style>
+   </UserControl.Resources>
+    <StackPanel Orientation="Horizontal" 
+                Margin="5,5,5,5">
+      <Button Style="{StaticResource PairingButtonStyle}"
+              Content="+"
+              IsEnabled="{Binding Pairing.IsBye, Converter={StaticResource BooleanInverter}, ElementName=this}"
+              Click="ScoreCounterButton_Click_Participant1"/>
+      <TextBlock Style="{StaticResource PairingTextBlockStyle}" 
+                 Text="{Binding Pairing.RoundScoreParticipant1, ElementName=this}"
+                 Width="25"
+                 TextAlignment="Center"/>
+      <TextBlock Style="{StaticResource PairingTextBlockStyle}"
+                 Width="400">
          <Run Text="{Binding Pairing.Participant1.Name, ElementName=this}"/>
          <Run Text=" - VS - "/>
          <Run Text="{Binding Pairing.Participant2.Name, ElementName=this}"/>
       </TextBlock>
-    </Border>
+      <TextBlock Style="{StaticResource PairingTextBlockStyle}" 
+                 Text="{Binding Pairing.RoundScoreParticipant2, ElementName=this}"
+                 Width="25"
+                 Visibility="Visible"/>
+      <Button Style="{StaticResource PairingButtonStyle}"
+              Content="+"
+              IsEnabled="{Binding Pairing.IsBye, Converter={StaticResource BooleanInverter}, ElementName=this}"
+              Click="ScoreCounterButton_Click_Participant2"/>
+   </StackPanel>
 </UserControl>
