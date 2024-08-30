@@ -72,8 +72,9 @@
       <!-- Active Tournament view -->
       <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
          <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="330"/>
+            <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
          <TextBlock>
             <Run Text="Tournament: "/>
@@ -94,6 +95,10 @@
                </DataTemplate>
             </ListBox.ItemTemplate>
          </ListBox>
+         <Button Grid.Row="2"
+                 Style="{StaticResource ButtonStyle}"
+                 Content="Next Round"
+                 HorizontalAlignment="Right"/>
       </Grid>
    </Grid>
 </Window>
