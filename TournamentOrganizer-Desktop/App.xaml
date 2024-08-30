@@ -14,7 +14,7 @@
             <Setter Property="BorderThickness"
                     Value="2"/>
             <Setter Property="FontSize"
-                    Value="14"/>
+                    Value="16"/>
             <Setter Property="Padding"
                     Value="5"/>
             <Setter Property="Width"
@@ -27,8 +27,12 @@
                TargetType="Button">
             <Setter Property="Width"
                     Value="150"/>
+            <Setter Property="Height"
+                    Value="35"/>
             <Setter Property="Margin"
                     Value="5,5,5,5"/>
+            <Setter Property="FontSize"
+                   Value="16"/>
         </Style>
        
         <!-- Converters -->

@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Windows;
 using TournamentOrganizer_Desktop.Models;
 using TournamentOrganizer_Desktop.ViewModels;
 
@@ -76,6 +77,25 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         Tournament?.StartTournament();
         State = AppState.TournamentStarted;
+    }
+
+    /// <summary>
+    /// Handles the NextRound button being clicked.
+    /// </summary>
+    [RelayCommand]
+    private void MoveNextRound()
+    {
+        // Check if any pairings have not received scores.
+        if (Tournament?.Pairings.FirstOrDefault(pairings => pairings.RoundScoreParticipant1 == 0 && pairings.RoundScoreParticipant2 == 0) != null)
+        {
+            var result = MessageBox.Show($"One or more pairings have not received any points, are you sure you want to move to the next round?", "Next Round", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.No)
+            {
+                return;
+            }
+        }
+
+        Tournament?.MoveNextRound();
     }
 
     #endregion

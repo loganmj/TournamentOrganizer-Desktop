@@ -34,14 +34,17 @@
       </StackPanel>
       
       <!-- Setup Tournament view -->
-      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentSetup}}">
+      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentSetup}}"
+            HorizontalAlignment="Center">
          <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
          </Grid.RowDefinitions>
          <TextBlock Grid.Row="0"
-                    Margin="5,5,5,5">
+                    Margin="5,5,5,5"
+                    FontSize="16"
+                    HorizontalAlignment="Center">
             <Run Text="Tournament: "/>
             <Run Text="{Binding Tournament.Name}"/>
          </TextBlock>
@@ -51,14 +54,18 @@
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Add Participant"
                     Command="{Binding AddParticipantCommand}"/>
-            <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding NewParticipantNameInput}" MaxLength="30"></TextBox>
+            <TextBox Style="{StaticResource TextBoxStyle}" 
+                     Text="{Binding NewParticipantNameInput}" 
+                     MaxLength="30"
+                     VerticalAlignment="Center"/>
             <Button Style="{StaticResource ButtonStyle}"
                     Content="Start"
                     Command="{Binding StartTournamentCommand}"/>
          </StackPanel>
 
          <ListBox Grid.Row="2"
-                  ItemsSource="{Binding Tournament.Participants}">
+                  ItemsSource="{Binding Tournament.Participants}"
+                  HorizontalAlignment="Center">
             <ListBox.ItemTemplate>
                <DataTemplate>
                   <userControls:ParticipantManager 
@@ -72,10 +79,12 @@
       <!-- Active Tournament view -->
       <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentStarted}}">
          <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="305"/>
+            <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
-         <TextBlock>
+         <TextBlock HorizontalAlignment="Center"
+                    FontSize="16">
             <Run Text="Tournament: "/>
             <Run Text="{Binding Tournament.Name}"/>
             <LineBreak/>
@@ -86,7 +95,8 @@
          </TextBlock>
          <ListBox Grid.Row="1" 
                   ItemsSource="{Binding Tournament.Pairings}"
-                  Focusable="False">
+                  Focusable="False"
+                  HorizontalAlignment="Center">
             <ListBox.ItemTemplate>
                <DataTemplate>
                   <userControls:PairingControl 
@@ -94,6 +104,12 @@
                </DataTemplate>
             </ListBox.ItemTemplate>
          </ListBox>
+         <Button Grid.Row="2"
+                 Style="{StaticResource ButtonStyle}"
+                 Content="Next Round"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Command="{Binding MoveNextRoundCommand}"/>
       </Grid>
    </Grid>
 </Window>
