@@ -135,9 +135,8 @@
                   HorizontalAlignment="Center">
             <ListBox.ItemTemplate>
                <DataTemplate>
-                  <userControls:ParticipantManager 
-                     Participant="{Binding}" 
-                     RemoveParticipant="{Binding DataContext.RemoveParticipantCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                  <userControls:FinalScoreControl 
+                     Participant="{Binding}"/>
                </DataTemplate>
             </ListBox.ItemTemplate>
          </ListBox>

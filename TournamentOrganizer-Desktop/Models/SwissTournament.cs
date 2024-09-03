@@ -110,10 +110,11 @@ public partial class SwissTournament : ObservableObject, ITournament
                 continue;
             }
 
-            IPairing pairing;
-
             // Find the first other unpaired participant that has not been matched with the participant
             var opponent = sortedParticipants.FirstOrDefault(p => p != participant && !p.IsPaired && !p.OpponentsPlayed.Contains(participant));
+
+            // Generate a pairing
+            IPairing pairing;
 
             if (opponent == null)
             {
@@ -132,6 +133,7 @@ public partial class SwissTournament : ObservableObject, ITournament
                 opponent.OpponentsPlayed.Add(participant);
             }
 
+            // Add the pairing
             Pairings.Add(pairing);
         }
     }
@@ -144,7 +146,6 @@ public partial class SwissTournament : ObservableObject, ITournament
         foreach (var pairing in Pairings)
         {
             // Calculate score for participant 1.
-            // TODO
             pairing.Participant1.Score += pairing.RoundScoreParticipant1;
 
             // Only calculate score for participant 2 if pairing is not a bye.
@@ -171,10 +172,7 @@ public partial class SwissTournament : ObservableObject, ITournament
             return;
         }
 
-        Participants.Add(new Participant(name)
-        {
-            ParticipantNumber = (uint)Participants.Count
-        });
+        Participants.Add(new Participant(name));
     }
 
     /// <inheritdoc/>
@@ -217,6 +215,13 @@ public partial class SwissTournament : ObservableObject, ITournament
         ClearPreviousPairings();
         CalculatePairings();
         CurrentRound++;
+    }
+
+    /// <inheritdoc/>
+    public void EndTournament()
+    {
+        CalculateScores();
+        ClearPreviousPairings();
     }
 
     #endregion

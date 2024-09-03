@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="TournamentOrganizer_Desktop.UserControls.FinalScoreControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TournamentOrganizer_Desktop.UserControls"
+             x:Name="this"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" 
+             d:DesignWidth="500">
+   <Border BorderThickness="2"
+           BorderBrush="DarkGray"
+           Padding="5,5,5,5"
+           Width="490">
+      <Grid>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+         </Grid.ColumnDefinitions>
+         <TextBlock FontSize="16"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+         <Run Text="Name: "/>
+         <Run Text="{Binding Participant.Name, ElementName=this}"/>
+         </TextBlock>
+         <TextBlock Grid.Column="1"
+                    FontSize="16"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right">
+         <Run Text="Score: "/>
+         <Run Text="{Binding Participant.Score, ElementName=this}"/>
+         </TextBlock>
+      </Grid>
+   </Border>
+</UserControl>
