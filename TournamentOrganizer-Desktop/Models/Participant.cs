@@ -1,14 +1,18 @@
-﻿
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace TournamentOrganizer_Desktop.Models;
 
 /// <summary>
 /// A participant object.
 /// </summary>
-public class Participant : IParticipant
+public partial class Participant : ObservableObject, IParticipant
 {
     #region Constants
 
     private const string DEFAULT_NAME = "John Doe";
+
+    [ObservableProperty]
+    private uint _score;
 
     #endregion
 
@@ -22,9 +26,6 @@ public class Participant : IParticipant
 
     /// <inheritdoc/>
     public bool HasReceivedBye { get; set; }
-
-    /// <inheritdoc/>
-    public uint Score { get; set; }
 
     /// <inheritdoc/>
     public List<IParticipant> OpponentsPlayed { get; set; }
