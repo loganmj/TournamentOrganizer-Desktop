@@ -106,15 +106,18 @@
          </ListBox>
          <Button Grid.Row="2"
                  Style="{StaticResource ButtonStyle}"
+                 Visibility="{Binding IsLastRound, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=true}"
                  Content="Next Round"
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
                  Command="{Binding MoveNextRoundCommand}"/>
          <Button Grid.Row="2"
                  Style="{StaticResource ButtonStyle}"
+                 Visibility="{Binding IsLastRound, Converter={StaticResource BooleanToVisibilityConverter}}"
                  Content="End Tournament"
                  HorizontalAlignment="Center"
-                 VerticalAlignment="Center"/>
+                 VerticalAlignment="Center"
+                 Command="{Binding EndTournamentCommand}"/>
       </Grid>
       
       <!-- Tournament results view -->
