@@ -83,13 +83,24 @@ public partial class SwissTournament : ObservableObject, ITournament
     }
 
     /// <summary>
+    /// Clears the previous round pairings.
+    /// </summary>
+    private void ClearPreviousPairings()
+    {
+        Pairings.Clear();
+        foreach (var participant in Participants)
+        {
+            participant.IsPaired = false;
+        }
+    }
+
+    /// <summary>
     /// Calculates pairings based on the current participants.
     /// </summary>
     private void CalculatePairings()
     {
         // Sort by score in descending order
         var sortedParticipants = Participants.OrderByDescending(p => p.Score).ToList();
-        Pairings.Clear();
 
         foreach (var participant in sortedParticipants)
         {
@@ -203,6 +214,7 @@ public partial class SwissTournament : ObservableObject, ITournament
         }
 
         CalculateScores();
+        ClearPreviousPairings();
         CalculatePairings();
         CurrentRound++;
     }
