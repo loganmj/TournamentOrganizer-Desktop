@@ -38,5 +38,6 @@
         <!-- Converters -->
         <viewModels:AppStateToVisibilityConverter x:Key="AppStateToVisibilityConverter" />
         <viewModels:BooleanInverter x:Key="BooleanInverter"/>
-    </Application.Resources>
+        <viewModels:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+   </Application.Resources>
 </Application>
