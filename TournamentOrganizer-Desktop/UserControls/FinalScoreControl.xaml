@@ -20,15 +20,15 @@
          <TextBlock FontSize="16"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left">
-         <Run Text="Name: "/>
-         <Run Text="{Binding Participant.Name, ElementName=this}"/>
+            <Run Text="Name: "/>
+            <Run Text="{Binding Participant.Name, ElementName=this}"/>
          </TextBlock>
          <TextBlock Grid.Column="1"
                     FontSize="16"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right">
-         <Run Text="Score: "/>
-         <Run Text="{Binding Participant.Score, ElementName=this}"/>
+            <Run Text="Score: "/>
+            <Run Text="{Binding Participant.Score, ElementName=this}"/>
          </TextBlock>
       </Grid>
    </Border>
