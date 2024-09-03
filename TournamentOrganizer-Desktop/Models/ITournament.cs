@@ -65,5 +65,10 @@ public interface ITournament
     /// </summary>
     void MoveNextRound();
 
+    /// <summary>
+    /// Tallies the final scores for the tournament.
+    /// </summary>
+    void EndTournament();
+
     #endregion
 }

@@ -112,6 +112,7 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         }
 
+        Tournament?.EndTournament();
         State = AppState.TournamentCompleted;
     }
 

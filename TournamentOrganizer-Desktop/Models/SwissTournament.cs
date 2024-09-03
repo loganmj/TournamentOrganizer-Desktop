@@ -102,6 +102,27 @@ public partial class SwissTournament : ObservableObject, ITournament
         // Sort by score in descending order
         var sortedParticipants = Participants.OrderByDescending(p => p.Score).ToList();
 
+        IPairing pairing;
+
+        /* I don't think this is needed, but I'm still double checking my algorithm
+
+        // If there is an odd number of participants, give a bye to the lowest-score participant that has not already received a bye.
+        if (sortedParticipants.Count % 2 != 0)
+        {
+            var byeParticipant = sortedParticipants.LastOrDefault(participant => !participant.HasReceivedBye);
+
+            if (byeParticipant != null)
+            {
+                pairing = new Pairing(byeParticipant);
+                byeParticipant.IsPaired = true;
+                byeParticipant.HasReceivedBye = true;
+                Pairings.Add(pairing);
+            }
+        }
+
+        */
+
+        // Generate pairings
         foreach (var participant in sortedParticipants)
         {
             // Skip if participant has already been paired
@@ -110,9 +131,7 @@ public partial class SwissTournament : ObservableObject, ITournament
                 continue;
             }
 
-            IPairing pairing;
-
-            // Find the first other unpaired participant that has not been matched with the participant
+            // Pair with the first other unpaired participant that has not been matched with the participant
             var opponent = sortedParticipants.FirstOrDefault(p => p != participant && !p.IsPaired && !p.OpponentsPlayed.Contains(participant));
 
             if (opponent == null)
@@ -132,6 +151,7 @@ public partial class SwissTournament : ObservableObject, ITournament
                 opponent.OpponentsPlayed.Add(participant);
             }
 
+            // Add the pairing
             Pairings.Add(pairing);
         }
     }
@@ -144,7 +164,6 @@ public partial class SwissTournament : ObservableObject, ITournament
         foreach (var pairing in Pairings)
         {
             // Calculate score for participant 1.
-            // TODO
             pairing.Participant1.Score += pairing.RoundScoreParticipant1;
 
             // Only calculate score for participant 2 if pairing is not a bye.
@@ -171,10 +190,7 @@ public partial class SwissTournament : ObservableObject, ITournament
             return;
         }
 
-        Participants.Add(new Participant(name)
-        {
-            ParticipantNumber = (uint)Participants.Count
-        });
+        Participants.Add(new Participant(name));
     }
 
     /// <inheritdoc/>
@@ -217,6 +233,13 @@ public partial class SwissTournament : ObservableObject, ITournament
         ClearPreviousPairings();
         CalculatePairings();
         CurrentRound++;
+    }
+
+    /// <inheritdoc/>
+    public void EndTournament()
+    {
+        CalculateScores();
+        ClearPreviousPairings();
     }
 
     #endregion

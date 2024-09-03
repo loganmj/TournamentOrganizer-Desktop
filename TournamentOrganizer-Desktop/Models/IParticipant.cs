@@ -18,11 +18,6 @@ public interface IParticipant
     string Name { get; set; }
 
     /// <summary>
-    /// A number given to a participant, localized to a specific tournament.
-    /// </summary>
-    uint ParticipantNumber { get; set; }
-
-    /// <summary>
     /// Has the participant received a bye.
     /// </summary>
     bool HasReceivedBye { get; set; }

@@ -21,9 +21,6 @@ public class Participant : IParticipant
     public string Name { get; set; }
 
     /// <inheritdoc/>
-    public uint ParticipantNumber { get; set; }
-
-    /// <inheritdoc/>
     public bool HasReceivedBye { get; set; }
 
     /// <inheritdoc/>
@@ -46,8 +43,6 @@ public class Participant : IParticipant
     {
         Id = Guid.NewGuid();
         Name = DEFAULT_NAME;
-        ParticipantNumber = 0;
-        Score = 0;
         OpponentsPlayed = [];
     }
 
@@ -60,8 +55,6 @@ public class Participant : IParticipant
     {
         Id = Guid.NewGuid();
         Name = name;
-        ParticipantNumber = 0;
-        Score = 0;
         OpponentsPlayed = [];
     }
 
