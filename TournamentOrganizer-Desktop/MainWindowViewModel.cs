@@ -25,6 +25,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private string _newParticipantNameInput;
 
+    [ObservableProperty]
+    private bool _isLastRound;
+
     #endregion
 
     #region Constructors
@@ -96,6 +99,7 @@ public partial class MainWindowViewModel : ViewModelBase
         }
 
         Tournament?.MoveNextRound();
+        IsLastRound = Tournament?.CurrentRound >= Tournament?.MaxRounds;
     }
 
     #endregion
