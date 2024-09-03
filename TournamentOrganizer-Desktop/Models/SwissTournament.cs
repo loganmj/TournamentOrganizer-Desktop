@@ -102,6 +102,27 @@ public partial class SwissTournament : ObservableObject, ITournament
         // Sort by score in descending order
         var sortedParticipants = Participants.OrderByDescending(p => p.Score).ToList();
 
+        IPairing pairing;
+
+        /* I don't think this is needed, but I'm still double checking my algorithm
+
+        // If there is an odd number of participants, give a bye to the lowest-score participant that has not already received a bye.
+        if (sortedParticipants.Count % 2 != 0)
+        {
+            var byeParticipant = sortedParticipants.LastOrDefault(participant => !participant.HasReceivedBye);
+
+            if (byeParticipant != null)
+            {
+                pairing = new Pairing(byeParticipant);
+                byeParticipant.IsPaired = true;
+                byeParticipant.HasReceivedBye = true;
+                Pairings.Add(pairing);
+            }
+        }
+
+        */
+
+        // Generate pairings
         foreach (var participant in sortedParticipants)
         {
             // Skip if participant has already been paired
@@ -110,11 +131,8 @@ public partial class SwissTournament : ObservableObject, ITournament
                 continue;
             }
 
-            // Find the first other unpaired participant that has not been matched with the participant
+            // Pair with the first other unpaired participant that has not been matched with the participant
             var opponent = sortedParticipants.FirstOrDefault(p => p != participant && !p.IsPaired && !p.OpponentsPlayed.Contains(participant));
-
-            // Generate a pairing
-            IPairing pairing;
 
             if (opponent == null)
             {
