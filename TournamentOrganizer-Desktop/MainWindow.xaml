@@ -41,8 +41,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
          </Grid.RowDefinitions>
-         <TextBlock Grid.Row="0"
-                    Margin="5,5,5,5"
+         <TextBlock Margin="5,5,5,5"
                     FontSize="16"
                     HorizontalAlignment="Center">
             <Run Text="Tournament: "/>
@@ -121,6 +120,27 @@
       </Grid>
       
       <!-- Tournament results view -->
-      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentCompleted}}"></Grid>
+      <Grid Visibility="{Binding State, Converter={StaticResource AppStateToVisibilityConverter}, ConverterParameter={x:Static local:AppState.TournamentCompleted}}">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+         </Grid.RowDefinitions>
+         <TextBlock Margin="5,5,5,5"
+                    FontSize="16"
+                    HorizontalAlignment="Center">
+            <Run Text="Final Results"/>
+         </TextBlock>
+         <ListBox Grid.Row="1"
+                  ItemsSource="{Binding Tournament.Participants}"
+                  HorizontalAlignment="Center">
+            <ListBox.ItemTemplate>
+               <DataTemplate>
+                  <userControls:ParticipantManager 
+                     Participant="{Binding}" 
+                     RemoveParticipant="{Binding DataContext.RemoveParticipantCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+               </DataTemplate>
+            </ListBox.ItemTemplate>
+         </ListBox>
+      </Grid>
    </Grid>
 </Window>
